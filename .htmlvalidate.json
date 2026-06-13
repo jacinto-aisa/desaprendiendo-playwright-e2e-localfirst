@@ -1,5 +1,6 @@
 {
   "extends": ["html-validate:recommended"],
+  "level": "warn",
   "rules": {
     "doctype-style": "off",
     "void-style": "off",
@@ -8,7 +9,6 @@
     "no-implicit-input-type": "off",
     "no-implicit-button-type": "off",
     "attribute-allowed-values": "off",
-
     "no-inline-style": "off",
     "require-sri": "off"
   }

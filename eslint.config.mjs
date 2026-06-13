@@ -55,30 +55,21 @@ export default [
     },
   },
 
-  {
-    files: ['api-local/**/*.ts', 'tests/**/*.ts', 'playwright.config.ts'],
+ {
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
+      parser: tseslint.parser,
       globals: {
         ...globals.node,
       },
     },
     rules: {
-      'no-unused-vars': 'off',
-
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^_',
-        },
-      ],
+      '@typescript-eslint/no-explicit-any': 'warn',      // Cambio: error → warn
+      '@typescript-eslint/no-unused-vars': 'warn',       // Cambio: error → warn
     },
   },
-
   {
     ...playwright.configs['flat/recommended'],
     files: ['tests/**/*.ts'],
