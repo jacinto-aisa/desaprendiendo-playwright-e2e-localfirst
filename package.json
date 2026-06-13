@@ -17,10 +17,12 @@
     "lint:web": "eslint \"web-local/**/*.js\" --max-warnings=999",
     "validate:html": "html-validate \"web-local/**/*.html\"",
     "lint:css": "stylelint \"web-local/**/*.css\"",
-    "quality": "npm run lint && npm run validate:html && npm run lint:css",
     "quality:css": "npm run lint:css",
-    "quality:full": "npm run lint && npm run validate:html && npm run lint:css",
-    "lint:strict": "eslint **/*.{js,mjs,cjs,ts} --max-warnings=0"
+    "quality:full": "npm run lint && npm run validate:html && npm run lint:css && npm run lint:playwright",
+    "lint:strict": "eslint **/*.{js,mjs,cjs,ts} --max-warnings=0",
+    "quality": "npm run lint && npm run validate:html && npm run lint:css",
+    "quality:playwright": "npm run lint:playwright",
+    "quality:strict": "npm run lint:strict && npm run validate:html && npm run lint:css"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,855 @@
+:root {
+  /* Variables de color para categorías (usadas por la nube de burbujas / leyenda) */
+  --c-tech: #1e88e5;
+  --c-domain: #8e24aa;
+  --c-level: #2e7d32;
+  --c-role: #f4511e;
+  --c-focus: #c62828;
+  --c-client: #00acc1;
+
+  /* Compatibilidad con estilos legacy del visor (no cambia layout) */
+  --stroke: var(--border);
+  --muted2: rgb(255 255 255 / 55%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.pill.is-active {
+  color: var(--text);
+  border-color: rgb(255 255 255 / 16%);
+  background: rgb(255 255 255 / 6%);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 14px;
+  margin: 18px 0 14px;
+}
+
+.left,
+.right {
+  background: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 6%),
+    rgb(255 255 255 / 4%)
+  );
+  border: 1px solid var(--stroke, var(--border));
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.left {
+  padding: 16px 14px;
+}
+
+.right {
+  padding: 12px;
+  overflow: hidden;
+}
+
+.kicker {
+  font-size: 12px;
+  color: var(--muted2);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 6px 0 8px;
+  font-size: 34px;
+  letter-spacing: -0.6px;
+}
+
+.sub {
+  margin: 0 0 12px;
+  color: var(--muted);
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+.kpiCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0 12px;
+}
+
+.kpi {
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgb(255 255 255 / 10%);
+  background: rgb(255 255 255 / 5%);
+}
+
+.kpi .n {
+  font-size: 26px;
+  font-weight: 750;
+  letter-spacing: -0.6px;
+  line-height: 1.05;
+}
+
+.kpi .n.pulse {
+  animation: kpiPulse 0.22s ease;
+}
+
+@keyframes kpiPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.kpi .l {
+  font-size: 12px;
+  color: var(--muted2);
+  margin-top: 4px;
+}
+
+.help {
+  border-top: 1px solid rgb(255 255 255 / 10%);
+  padding-top: 10px;
+}
+
+.selTitle {
+  font-size: 12px;
+  color: var(--muted2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sel {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 22px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Cursos seleccionados (lista compacta a la izquierda) */
+.selCourses {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed rgb(255 255 255 / 10%);
+}
+
+.selCourses__title {
+  font-size: 12px;
+  color: var(--muted2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.selCourses__list {
+  margin-top: 6px;
+  max-height: 220px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.selCourses__list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.selCourses__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  border: 1px solid rgb(255 255 255 / 10%);
+  background: rgb(255 255 255 / 4%);
+}
+
+.selCourses__list li .dot {
+  width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 55%);
+  flex: 0 0 auto;
+}
+
+.selCourses__list li .t {
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.selCourses__list .empty {
+  color: var(--muted2);
+  font-size: 13px;
+  padding: 6px 0;
+}
+
+.st {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgb(255 255 255 / 12%);
+  background: rgb(255 255 255 / 5%);
+  font-size: 12px;
+  color: var(--text);
+}
+
+.st .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: currentcolor;
+}
+
+.st-tech {
+  color: var(--c-tech);
+  background: rgb(30 136 229 / 14%);
+  border-color: rgb(30 136 229 / 25%);
+}
+
+.st-domain {
+  color: var(--c-domain);
+  background: rgb(142 36 170 / 14%);
+  border-color: rgb(142 36 170 / 25%);
+}
+
+.st-level {
+  color: var(--c-level);
+  background: rgb(46 125 50 / 14%);
+  border-color: rgb(46 125 50 / 25%);
+}
+
+.st-role {
+  color: var(--c-role);
+  background: rgb(244 81 30 / 14%);
+  border-color: rgb(244 81 30 / 25%);
+}
+
+.st-focus {
+  color: var(--c-focus);
+  background: rgb(198 40 40 / 14%);
+  border-color: rgb(198 40 40 / 25%);
+}
+
+.st-client {
+  color: var(--c-client);
+  background: rgb(0 172 193 / 14%);
+  border-color: rgb(0 172 193 / 25%);
+}
+
+.tagTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 2px 2px 10px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.lg {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 5px 8px;
+  border-radius: 999px;
+  border: 1px solid rgb(255 255 255 / 10%);
+  background: rgb(255 255 255 / 4%);
+}
+
+.lg .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: currentcolor;
+  display: inline-block;
+}
+
+.lg-tech {
+  color: var(--c-tech);
+}
+
+.lg-domain {
+  color: var(--c-domain);
+}
+
+.lg-level {
+  color: var(--c-level);
+}
+
+.lg-role {
+  color: var(--c-role);
+}
+
+.lg-focus {
+  color: var(--c-focus);
+}
+
+.lg-client {
+  color: var(--c-client);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.chip {
+  border: 1px solid rgb(255 255 255 / 12%);
+  background: rgb(255 255 255 / 4%);
+  color: var(--muted);
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.chip:hover {
+  color: var(--text);
+  background: rgb(255 255 255 / 7%);
+}
+
+.chip.is-on {
+  color: var(--text);
+  border-color: rgb(255 255 255 / 20%);
+  background: rgb(255 255 255 / 9%);
+}
+
+.chip.is-disabled {
+  opacity: 0.35;
+  filter: saturate(0.6);
+  cursor: not-allowed;
+}
+
+.reset {
+  border: 1px solid rgb(255 255 255 / 16%);
+  background: rgb(255 255 255 / 6%);
+  color: var(--text);
+  padding: 6px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.reset:hover {
+  background: rgb(255 255 255 / 10%);
+  transform: translateY(-1px);
+}
+
+.bubbleHost {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgb(255 255 255 / 10%);
+  background:
+    radial-gradient(
+      800px 500px at 20% 20%,
+      rgb(30 136 229 / 18%),
+      transparent 58%
+    ),
+    radial-gradient(
+      700px 480px at 85% 30%,
+      rgb(142 36 170 / 16%),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 520px at 55% 90%,
+      rgb(46 125 50 / 10%),
+      transparent 55%
+    ),
+    rgb(255 255 255 / 3%);
+  overflow: hidden;
+  min-height: 520px;
+}
+
+.bubbleSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* bubbles */
+.bNode {
+  cursor: pointer;
+  filter: drop-shadow(0 12px 22px rgb(0 0 0 / 25%));
+  transition: opacity 0.15s ease;
+}
+
+.bCircle {
+  transition:
+    cx 0.35s ease,
+    cy 0.35s ease,
+    r 0.35s ease,
+    opacity 0.15s ease;
+}
+
+.bLabel {
+  pointer-events: none;
+  font-weight: 650;
+  fill: rgb(255 255 255 / 92%);
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.bSub {
+  pointer-events: none;
+  fill: rgb(255 255 255 / 70%);
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.bNode.is-dim {
+  opacity: 0.45;
+}
+
+.bNode.is-sel {
+  filter: drop-shadow(0 16px 28px rgb(0 0 0 / 35%));
+}
+
+.bNode.is-sel .bCircle {
+  filter: drop-shadow(0 0 14px rgb(255 255 255 / 10%));
+}
+
+.bNode.is-off {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.footer {
+  color: var(--muted2);
+  font-size: 12px;
+  margin: 16px 0 20px;
+  text-align: center;
+}
+
+.card {
+  margin-top: 12px;
+  background: rgb(255 255 255 / 5%);
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.sectionTitle h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.sectionTitle small {
+  color: var(--muted2);
+}
+
+/* responsive */
+@media (width <= 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .bubbleHost {
+    min-height: 520px;
+  }
+}
+
+/* === Ajustes suaves para igualar cursos.html === */
+.bubbleHost {
+  background: rgb(0 0 0 / 8%);
+  border: 1px solid rgb(255 255 255 / 10%);
+}
+
+/* === Alineación tipográfica con cursos.html (NO tocar nube ni listado) === */
+
+/* === Ajuste suave para que cursos_graph.html se parezca a cursos.html (sin tocar layout) === */
+
+.cursosGraph {
+  /* reutiliza variables globales de base.css (bg/card/muted/text/border) */
+}
+
+/* Fondo: usa el mismo background base (sin gradientes propios) */
+.cursosGraph {
+  background: var(--bg);
+}
+
+/* Asegura coherencia tipográfica general */
+.cursosGraph,
+.cursosGraph * {
+  font-family: var(--sans);
+}
+
+/* EXCLUSIONES: NO tocar tipografía del visor de burbujas ni el listado */
+.cursosGraph .bubbleHost,
+.cursosGraph .bubbleHost *,
+.cursosGraph #courseGroups,
+.cursosGraph #courseGroups * {
+  font-family: unset;
+}
+
+/* Cards / cuadros: mismos tonos que cursos.html */
+.cursosGraph .card {
+  background: rgb(0 0 0 / 12%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Chip/buttons: igual estilo que pills */
+.cursosGraph .chip {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 3%);
+  color: var(--muted);
+  font-weight: 650;
+  font-size: 13px;
+}
+
+.cursosGraph .chip:hover {
+  background: rgb(255 255 255 / 5%);
+  color: var(--text);
+}
+
+.cursosGraph .chip.is-on {
+  border-color: rgb(24 184 200 / 45%);
+  background: rgb(24 184 200 / 10%);
+  color: var(--text);
+}
+
+/* Reset button coherente */
+.cursosGraph .reset {
+  border: 1px solid var(--border);
+  background: rgb(255 255 255 / 3%);
+  color: var(--muted);
+  border-radius: 12px;
+  padding: 8px 10px;
+}
+
+.cursosGraph .reset:hover {
+  color: var(--text);
+  background: rgb(255 255 255 / 5%);
+}
+
+/* Bubble host: integrar sin cambiar tamaño ni posición */
+.cursosGraph .bubbleHost {
+  background: rgb(0 0 0 / 10%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* === KPI: tipografía igual que cursos.html (solo tipografía) === */
+.cursosGraph .kpi .n {
+  font-size: 20px; /* cursos.css */
+  font-weight: 800; /* base.css */
+  letter-spacing: normal;
+  line-height: normal;
+}
+
+.cursosGraph .kpi .l {
+  font-size: 12px; /* cursos.css */
+  font-weight: 650; /* base.css */
+}
+
+/* KPI en una sola línea (solo cursos_graph) */
+.cursosGraph .kpiCard {
+  flex-flow: row nowrap;
+  gap: 14px;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.cursosGraph .kpi {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 10px;
+}
+
+.cursosGraph .kpi .l {
+  margin-top: 0;
+}
+
+@media (width <= 480px) {
+  .cursosGraph .kpiCard {
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+}
+
+/* Visor: valores por defecto (JS los ajusta después) */
+.cursosGraph .bubbleHost {
+  min-height: 520px;
+}
+
+.cursosGraph .bubbleSvg {
+  height: 520px;
+}
+
+/* Controles debajo de seleccionados */
+.selControls {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Overlay de controles dentro del canvas */
+.cursosGraph .bubbleHost {
+  position: relative;
+}
+
+.cursosGraph .bubbleOverlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.cursosGraph .bubbleOverlay__left,
+.cursosGraph .bubbleOverlay__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cursosGraph .bubbleOverlay__left button,
+.cursosGraph .bubbleOverlay__right {
+  pointer-events: auto;
+}
+
+.cursosGraph .bubbleOverlay__center {
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgb(0 0 0 / 18%);
+  backdrop-filter: blur(6px);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 13px;
+  max-width: 46vw;
+  overflow: hidden;
+}
+
+.cursosGraph .bubbleOverlay__centerLabel {
+  opacity: 0.85;
+  font-weight: 650;
+}
+
+.cursosGraph .bubbleOverlay__centerValue {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cursosGraph .bubbleOverlay__right {
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgb(0 0 0 / 18%);
+  backdrop-filter: blur(6px);
+  color: var(--text);
+  font-weight: 650;
+  font-size: 13px;
+}
+
+.cursosGraph .bubbleMeta__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 45%);
+  box-shadow: 0 6px 16px rgb(0 0 0 / 35%);
+}
+
+/* Leyenda fija (compacta, elegante) */
+.bubbleLegend {
+  position: absolute;
+  top: 56px;
+  right: 12px;
+  z-index: 6;
+  pointer-events: auto;
+  padding: 10px 10px 9px;
+  border-radius: 14px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  background: rgb(0 0 0 / 20%);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 40px rgb(0 0 0 / 28%);
+  max-width: 190px;
+}
+
+.bubbleLegend {
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+body.cursosGraph.legend-off .bubbleLegend {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+.bubbleLegend__title {
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 65%);
+  margin: 0 0 8px;
+}
+
+.bubbleLegend__items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bubbleLegend .lg {
+  justify-content: flex-start;
+  background: rgb(255 255 255 / 4%);
+}
+
+@media (width <= 860px) {
+  .bubbleLegend {
+    top: auto;
+    bottom: 12px;
+    right: 12px;
+  }
+}
+
+/* Orden de selección (Dominio↔Tecnología) */
+.cursosGraph .bubbleOverlay__left {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.cursosGraph .bubbleOverlay__leftRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cursosGraph .bubbleOverlay__leftRow .orderToggle__btn,
+.cursosGraph .bubbleOverlay__leftRow .clientToggle__btn {
+  border: 1px solid var(--border);
+  background: rgb(0 0 0 / 18%);
+  backdrop-filter: blur(10px);
+}
+
+.cursosGraph .orderToggle {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgb(0 0 0 / 18%);
+  backdrop-filter: blur(10px);
+}
+
+.cursosGraph .orderToggle__btn {
+  font: inherit;
+  font-size: 12px;
+  line-height: 1;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  opacity: 0.9;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.cursosGraph .orderToggle__btn:hover {
+  opacity: 1;
+}
+
+.cursosGraph .orderToggle__btn.is-on {
+  background: rgb(255 255 255 / 12%);
+  border-color: rgb(255 255 255 / 18%);
+  opacity: 1;
+}
+
+.clientToggle {
+  margin-top: 6px;
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgb(0 0 0 / 18%);
+  backdrop-filter: blur(10px);
+  justify-content: flex-start;
+}
+
+.cursosGraph .clientToggle__btn {
+  font: inherit;
+  font-size: 12px;
+  line-height: 1;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  opacity: 0.88;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cursosGraph .clientToggle__btn:hover {
+  opacity: 1;
+}
+
+.cursosGraph .clientToggle__btn.is-on {
+  background: rgb(255 255 255 / 12%);
+  border-color: rgb(255 255 255 / 16%);
+}
+
+.cursosGraph .clientToggle__btn.is-off {
+  opacity: 0.55;
+}
+
+.cursosGraph.hideClients .bubbleLegend .lg-client {
+  display: none;
+}

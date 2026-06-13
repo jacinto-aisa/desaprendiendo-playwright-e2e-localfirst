@@ -1,0 +1,754 @@
+// cursos.js — Local-First (sin hosting)
+// - NO elimina cursos (renderiza exactamente lo que venga en data.js)
+// - Agrupa por título (vista resumen) pero cada edición sigue existiendo en el detalle
+// - KPIs: ediciones = nº de registros, títulos = nº de grupos, horas = suma hours_per_edition
+// - Filtros: nube de Tags (con categorías) + multiselección con Shift
+// - Nota: NO se filtra por año (el año se muestra en el listado, pero no es criterio de filtrado)
+
+(function(){
+  const D = window.SITE_DATA || {};
+  const allCourses = Array.isArray(D.courses) ? D.courses : [];
+
+  const $  = (s, el=document)=>el.querySelector(s);
+  const $$ = (s, el=document)=>Array.from(el.querySelectorAll(s));
+
+  function esc(s){
+    return String(s ?? '').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+  }
+  function num(v){
+    if (v === null || v === undefined) return 0;
+    const n = parseFloat(String(v).trim().replace(',','.'));
+    return (isFinite(n) ? n : 0);
+  }
+  function fmtInt(n){
+    try { return new Intl.NumberFormat('es-ES').format(Math.round(n)); }
+    catch(_e){ return String(Math.round(n)); }
+  }
+
+  // Animación suave de contadores (KPIs / resultados)
+  function animateCounter(el, to, opts={}){
+    if(!el) return;
+    const suffix = opts.suffix || '';
+    const duration = Math.max(180, Math.min(900, opts.duration || 340));
+
+    const prevRaw = (el.dataset.prevValue !== undefined) ? el.dataset.prevValue : String(el.textContent||'');
+    const prevNum = parseFloat(String(prevRaw).replace(/[\s.]/g,'').replace(',', '.').replace(/[^0-9.-]/g,'')) || 0;
+    const nextNum = Number(to) || 0;
+
+    // Evita trabajo si no cambia
+    if(prevNum === nextNum){
+      el.textContent = fmtInt(nextNum) + suffix;
+      return;
+    }
+
+    el.dataset.prevValue = String(nextNum);
+
+    const start = performance.now();
+    const from = prevNum;
+    const delta = nextNum - from;
+
+    // “Pulse” visual (se reinicia siempre)
+    el.classList.remove('kpiPulse');
+    // forzar reflow
+    void el.offsetWidth;
+    el.classList.add('kpiPulse');
+
+    function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+    function tick(now){
+      const p = Math.min(1, (now - start) / duration);
+      const v = from + delta * easeOutCubic(p);
+      el.textContent = fmtInt(v) + suffix;
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  function norm(s){
+    s = String(s||'').trim().toLowerCase();
+    try { s = s.normalize('NFD').replace(/[\u0300-\u036f]/g,''); } catch(_e){}
+    s = s.replace(/\s+/g,' ');
+    return s;
+  }
+
+  function normalizeTitle(t){
+    t = norm(t).replace(/[–—]/g,'-').replace(/\s*-\s*/g,' - ');
+    return t.trim();
+  }
+
+  function pickDisplayTitle(arr){
+    const freq = new Map();
+    for(const c of arr){
+      const t = String(c.title||'').trim();
+      freq.set(t, (freq.get(t)||0)+1);
+    }
+    let best='', bestN=-1;
+    for(const [k,v] of freq.entries()){
+      if(v>bestN){ bestN=v; best=k; }
+    }
+    return best || (arr[0] ? String(arr[0].title||'') : '');
+  }
+
+
+  // ===== DOM refs =====
+  const elCount = $('#coursesCount');
+
+  const elTagCloud = $('#tagCloud');
+  const elTagSearch = $('#tagSearch');
+  const elClearTags = $('#clearTags');
+  const elModeToggle = $('#modeToggle');
+
+  const elCatBar = document.querySelector('.tagCloud__cats');
+  const elCatButtons = elCatBar ? Array.from(elCatBar.querySelectorAll('.catBtn')) : [];
+
+  const elKpiEditions = $('#kpiEditions');
+  const elKpiDistinct = $('#kpiDistinctTitles');
+  const elKpiHours = $('#kpiTotalHours');
+
+  const elGroupsHost = document.getElementById('courseGroups');
+
+  // Fase de visibilidad de categorías:
+  // - Al iniciar (o reiniciar), solo se muestran tags/burbujas de Dominio y Tecnología.
+  // - Tras seleccionar una tag de una de esas categorías, se desbloquean el resto
+  //   de categorías y permanecen visibles hasta el próximo reinicio.
+  let otherCatsUnlocked = false;
+
+  // ===== Taxonomía / categorías de tags (data-driven desde data.js) =====
+// Categorías fijas (sin "Enfoque"). Se leen tags y categorías de:
+// - SITE_DATA.tagCatalog (cat -> [tags])
+// - course.tagsByType (cat -> [tags])
+// Back-compat: course.tags (lista plana) y course.type (tag legacy)
+const CAT = {
+  TECH: 'Tecnología',
+  DOMAIN: 'Dominio',
+  LEVEL: 'Nivel',
+  ROLE: 'Rol',
+  CLIENT: 'Cliente'
+};
+const CAT_ORDER = [CAT.TECH, CAT.DOMAIN, CAT.LEVEL, CAT.ROLE, CAT.CLIENT];
+const CAT_ORDER_MAP = new Map(CAT_ORDER.map((c,i)=>[c,i]));
+
+function canonCatKey(s){
+  // normaliza claves tipo "Tecnologia" / "Tecnología" / "TECH" etc.
+  return norm(String(s||''))
+    .replace(/\./g,'')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function catDisplayFromKey(catKey){
+  const k = canonCatKey(catKey);
+  if(k === 'tecnologia') return CAT.TECH;
+  if(k === 'dominio') return CAT.DOMAIN;
+  if(k === 'nivel') return CAT.LEVEL;
+  if(k === 'rol') return CAT.ROLE;
+  if(k === 'cliente') return CAT.CLIENT;
+  // si llega algo inesperado, lo devolvemos "bonito"
+  return String(catKey||'').trim() || CAT.TECH;
+}
+
+// Alias de compatibilidad interna (en algunas iteraciones se usó toCat)
+function toCat(catKey){
+  return catDisplayFromKey(catKey);
+}
+
+// Mapa global tag->categoría (solo para clasificar legacy; NO para inventar tags en UI)
+const tagToCat = new Map(); // norm(tag) -> CAT.*
+(function buildTagCatalog(){
+  // Aprende EXCLUSIVAMENTE desde tagsByType reales presentes en cursos (data-driven)
+  for(const c of allCourses){
+    const byType = c && typeof c.tagsByType === 'object' ? c.tagsByType : null;
+    if(byType){
+      for(const [catKey, tags] of Object.entries(byType)){
+        const cat = toCat(catKey);
+        if(!Array.isArray(tags)) continue;
+        for(const t of tags){
+          const lbl = String(t||'').trim();
+          if(!lbl) continue;
+          const k = norm(lbl);
+          if(!tagToCat.has(k)) tagToCat.set(k, cat);
+        }
+      }
+    }
+    // Cliente legacy solo si no viene en tagsByType
+    if(c?.client){
+      const k = norm(String(c.client));
+      if(!tagToCat.has(k)) tagToCat.set(k, CAT.CLIENT);
+    }
+  }
+})();
+
+function tagCategory(label){
+  const k = norm(label);
+  return tagToCat.get(k) || CAT.TECH;
+}
+
+// Map normalized tag -> display tag (primera aparición)
+const tagLabelMap = new Map();
+
+
+function getCourseTagEntries(c){
+  const entries = [];
+  const seen = new Set();
+
+  const push = (tag, catKey)=>{
+    const lbl = String(tag||'').trim();
+    if(!lbl) return;
+    const k = norm(lbl);
+    if(!k || seen.has(k)) return;
+    seen.add(k);
+
+    const cat = catKey ? catDisplayFromKey(catKey) : tagCategory(lbl);
+    if(!tagLabelMap.has(k)) tagLabelMap.set(k, lbl);
+    entries.push({ key: k, label: lbl, cat });
+  };
+
+  const byType = (c && typeof c.tagsByType === 'object') ? c.tagsByType : null;
+
+  if(byType){
+    // MODO ESTRICTO (como WinForms): SOLO tagsByType
+    for(const [catKey, tags] of Object.entries(byType)){
+      if(!Array.isArray(tags)) continue;
+      for(const t of tags) push(t, catKey);
+    }
+    // Cliente legacy solo si NO viene ya en tagsByType
+    const hasClient = Object.keys(byType).some(k => toCat(k) === CAT.CLIENT);
+    if(!hasClient && c?.client) push(String(c.client), 'Cliente');
+  }else{
+    // Fallback legacy solo si no hay tagsByType
+    if(Array.isArray(c?.tags)){
+      for(const t of c.tags) push(t, null);
+    }
+    if(c?.type) push(String(c.type), null);
+    if(c?.client) push(String(c.client), 'Cliente');
+  }
+
+  // Orden estable
+  entries.sort((a,b)=>{
+    const oa = CAT_ORDER_MAP.get(a.cat);
+    const ob = CAT_ORDER_MAP.get(b.cat);
+    const ia = (oa === undefined) ? 99 : oa;
+    const ib = (ob === undefined) ? 99 : ob;
+    if(ia !== ib) return ia - ib;
+    return a.label.localeCompare(b.label,'es',{sensitivity:'base'});
+  });
+
+  return entries;
+}
+
+function getCourseTags(c){
+  // Para mostrar en tabla (col-type) mantenemos unión plana.
+  return getCourseTagEntries(c).map(e=>e.label);
+}
+
+  // ===== Selección de tags =====
+  // key -> {label, cat}
+  const selectedTags = new Map();
+  const visibleCats = new Set(Object.values(CAT));
+
+  function isPrimaryCat(cat){
+    return cat === CAT.TECH || cat === CAT.DOMAIN;
+  }
+
+  function updateCatButtonsUI(){
+    if(!elCatButtons || !elCatButtons.length) return;
+    elCatButtons.forEach(b=>{
+      const c = b.getAttribute('data-cat');
+      const enabled = otherCatsUnlocked || isPrimaryCat(c);
+      b.classList.toggle('is-disabled', !enabled);
+      b.setAttribute('aria-disabled', enabled ? 'false' : 'true');
+
+      const isOn = visibleCats.has(c);
+      b.classList.toggle('active', isOn);
+      b.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+    });
+  }
+  let filterMode = 'AND';
+
+  function clearSelectedTags(){ selectedTags.clear(); }
+
+
+  function selectedByCategory(){
+    const map = new Map();
+    for(const v of selectedTags.values()){
+      if(!map.has(v.cat)) map.set(v.cat, new Set());
+      map.get(v.cat).add(norm(v.label));
+    }
+    return map;
+  }
+
+  function courseMatches(c){
+    if(!selectedTags.size) return true;
+
+    const entries = getCourseTagEntries(c);
+    const byCat = new Map();
+    for(const e of entries){
+      if(!byCat.has(e.cat)) byCat.set(e.cat, new Set());
+      byCat.get(e.cat).add(norm(e.label));
+    }
+
+    if(filterMode === 'OR'){
+      for(const v of selectedTags.values()){
+        const set = byCat.get(v.cat);
+        if(set && set.has(norm(v.label))) return true;
+      }
+      return false;
+    }
+
+    // AND (facetas): por cada categoría seleccionada, debe cumplir al menos un tag de esa categoría.
+    const selByCat = selectedByCategory();
+    for(const [cat, want] of selByCat.entries()){
+      const have = byCat.get(cat);
+      if(!have) return false;
+      let ok = false;
+      for(const w of want){ if(have.has(w)){ ok = true; break; } }
+      if(!ok) return false;
+    }
+    return true;
+  }
+
+  function groupByTitle(courses){
+    const map = new Map();
+    for(const c of courses){
+      const key = normalizeTitle(c.title);
+      if(!map.has(key)) map.set(key, []);
+      map.get(key).push(c);
+    }
+    for(const arr of map.values()){
+      arr.sort((a,b)=>(parseInt(b.year,10)||0)-(parseInt(a.year,10)||0));
+    }
+    const groups = Array.from(map.entries()).map(([k, arr])=>({
+      key:k,
+      items:arr,
+      title: pickDisplayTitle(arr)
+    }));
+    groups.sort((a,b)=>a.title.localeCompare(b.title,'es',{sensitivity:'base'}));
+    return groups;
+  }
+
+  // ===== KPIs =====
+  function updateKPIs(filtered, groups){
+    const editions = filtered.length;
+    const distinct = groups.length;
+    const hours = filtered.reduce((acc,c)=>acc + num(c.hours_per_edition||0), 0);
+
+    animateCounter(elKpiEditions, editions);
+    animateCounter(elKpiDistinct, distinct);
+    animateCounter(elKpiHours, hours, { suffix: 'h' });
+    animateCounter(elCount, distinct);
+  }
+
+  // ===== Mailto =====
+  function buildRequestMailto(courseTitle, item){
+    const to = 'jacinto@desaprendiendo.net';
+    const now = new Date();
+    const pad = (n)=>String(n).padStart(2,'0');
+    const stamp = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+    const subject = `Solicitud de formación: ${courseTitle}`;
+    const body =
+`Hola Jacinto,
+
+Quiero solicitar esta formación.
+
+Fecha y hora de solicitud: ${stamp}
+
+Curso: ${courseTitle}
+Tags: ${(getCourseTags(item).join(', ') || '')}
+Cliente (referencia): ${item.client || ''}
+Horas: ${(item.hours_per_edition ?? '')}h
+Año: ${item.year || ''}
+
+Gracias.`;
+
+    return `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  // ===== Render tags =====
+  function renderTags(){
+    if(!elTagCloud) return;
+
+    const q = (elTagSearch ? elTagSearch.value.trim() : '');
+    const qn = norm(q);
+
+    // Conteo por tag en el universo actual (aplicando selección)
+    const base = allCourses.filter(courseMatches);
+    const counts = new Map(); // key -> {label, cat, n}
+
+    for(const c of base){
+      for(const e of getCourseTagEntries(c)){
+        if(!e.key) continue;
+        if(!counts.has(e.key)) counts.set(e.key, { label: e.label, cat: e.cat, n: 0 });
+        counts.get(e.key).n++;
+      }
+    }
+
+    const keys = Array.from(counts.keys())
+      .filter(k=>{
+        const meta = counts.get(k);
+        if(!meta) return false;
+
+        const isSelected = selectedTags.has(k);
+        const catVisible = otherCatsUnlocked ? visibleCats.has(meta.cat) : isPrimaryCat(meta.cat);
+        if(!catVisible && !isSelected) return false;
+
+        if(!qn) return true;
+        return norm(meta.label).includes(qn);
+      })
+      .sort((a,b)=>{
+        const aAct = selectedTags.has(a) ? 1 : 0;
+        const bAct = selectedTags.has(b) ? 1 : 0;
+        if(aAct!==bAct) return bAct-aAct;
+        const ca = (counts.get(a)?.n)||0, cb = (counts.get(b)?.n)||0;
+        if(ca!==cb) return cb-ca;
+        const la = counts.get(a)?.label || a;
+        const lb = counts.get(b)?.label || b;
+        return la.localeCompare(lb,'es',{sensitivity:'base'});
+      });
+
+    if(!keys.length){
+      elTagCloud.innerHTML = `<div class="empty">No hay tags para el filtro actual.</div>`;
+      return;
+    }
+
+    elTagCloud.innerHTML = keys.map(k=>{
+      const meta = counts.get(k);
+      const lbl = meta ? meta.label : (tagLabelMap.get(k) || k);
+      const c = meta ? meta.n : 0;
+      const cat = meta ? meta.cat : tagCategory(lbl);
+      const active = selectedTags.has(k) ? 'active' : '';
+      return `<span class="tag ${active}" data-tag="${esc(k)}" data-cat="${esc(cat)}" role="button" tabindex="0">${esc(lbl)} <span class="c">${c}</span></span>`;
+    }).join('');
+
+    // Delegación de eventos (click + teclado)
+    elTagCloud.onclick = (e)=>{
+      const t = e.target && (e.target.closest ? e.target.closest('.tag') : null);
+      if(!t) return;
+      const k = t.getAttribute('data-tag');
+      const cat = t.getAttribute('data-cat') || CAT.TECH;
+      if(!k) return;
+
+      const lbl = (counts.get(k)?.label) || (tagLabelMap.get(k) || k);
+
+      // Desbloquea el resto de categorías al primer click sobre Tecnología/Dominio
+      if(!otherCatsUnlocked && isPrimaryCat(cat)){
+        otherCatsUnlocked = true;
+        // Al desbloquear, mostramos todas las categorías por defecto.
+        for(const c0 of Object.values(CAT)) visibleCats.add(c0);
+        updateCatButtonsUI();
+      }
+
+      if(e.shiftKey){
+        if(selectedTags.has(k)) selectedTags.delete(k);
+        else selectedTags.set(k, { label: lbl, cat });
+      } else {
+        // Single por categoría (limpio): sustituye selección dentro de la categoría
+        const sameCatKeys = Array.from(selectedTags.entries())
+          .filter(([,v])=>v.cat===cat)
+          .map(([kk])=>kk);
+
+        const alreadyOnly = (sameCatKeys.length===1 && sameCatKeys[0]===k);
+        for(const kk of sameCatKeys) selectedTags.delete(kk);
+        if(!alreadyOnly) selectedTags.set(k, { label: lbl, cat });
+      }
+
+      render();
+    };
+
+    elTagCloud.onkeydown = (e)=>{
+      if(e.key !== 'Enter' && e.key !== ' ') return;
+      const t = e.target && (e.target.classList && e.target.classList.contains('tag') ? e.target : null);
+      if(!t) return;
+      e.preventDefault();
+      t.click();
+    };
+  }
+
+  // ===== Render cursos =====
+  function render(){
+    if(!elGroupsHost) return;
+
+    const filtered = allCourses.filter(courseMatches);
+    const groups = groupByTitle(filtered);
+
+    updateKPIs(filtered, groups);
+    renderTags();
+
+    if(!groups.length){
+      elGroupsHost.innerHTML = `<div class="empty">No hay cursos que coincidan con el filtro.</div>`;
+      return;
+    }
+
+    elGroupsHost.innerHTML = groups.map(g=>{
+      const sessions = g.items.length;
+      const hours = g.items.reduce((acc,c)=>acc + num(c.hours_per_edition||0), 0);
+
+      // Tags del grupo (unión de tags de todas sus ediciones)
+      const groupTagsMap = new Map(); // key -> {label, cat}
+      for(const it of g.items){
+        for(const e of getCourseTagEntries(it)){
+          if(!e.key) continue;
+          if(!groupTagsMap.has(e.key)) groupTagsMap.set(e.key, { label: e.label, cat: e.cat });
+        }
+      }
+      const groupTags = Array.from(groupTagsMap.values())
+        .sort((a,b)=>a.label.localeCompare(b.label,'es',{sensitivity:'base'}));
+
+      const rows = g.items.map(c=>{
+        const baseTags = getCourseTags(c); // sin año
+        return `
+          <tr>
+            <td class="col-action"><a class="reqBtn" href="${buildRequestMailto(g.title, c)}">Solicitar</a></td>
+            <td class="col-year">${esc(c.year||'')}</td>
+            <td class="col-type">${esc(baseTags.join(', '))}</td>
+            <td class="col-hours">${esc(num(c.hours_per_edition||0) ? (num(c.hours_per_edition||0) + 'h') : '')}</td>
+            <td class="col-client">${esc(c.client||'')}</td>
+          </tr>
+        `;
+      }).join('');
+
+      return `
+        <div class="cg-item">
+          <button class="cg-head" type="button" aria-expanded="false">
+            <div class="cg-title">${esc(g.title)}</div>
+            <div class="cg-meta">
+              <span class="cg-pill">${sessions} ediciones</span>
+              <span class="cg-pill">${fmtInt(hours)}h</span>
+              <span class="cg-chev" aria-hidden="true">▾</span>
+            </div>
+          </button>
+          <div class="cg-body" hidden>
+            <div class="cg-inner">
+              <div class="cg-table-wrap">
+                <table class="cg-table">
+                  <colgroup>
+                    <col style="width:120px">
+                    <col style="width:90px">
+                    <col style="width:240px">
+                    <col style="width:110px">
+                    <col>
+                  </colgroup>
+                  <thead>
+                    <tr><th></th><th>Año</th><th>Tags</th><th>Horas</th><th>Cliente</th></tr>
+                  </thead>
+                  <tbody>${rows}</tbody>
+                </table>
+              </div>
+
+              <div class="cg-tags" aria-label="Tags del curso">
+                ${groupTags.map(t=>`<span class="tagMini" data-cat="${esc(t.cat)}">${esc(t.label)}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Accordion
+    $$('.cg-head', elGroupsHost).forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const body = btn.nextElementSibling;
+        const open = !body.hasAttribute('hidden');
+        if(open){
+          body.setAttribute('hidden','');
+          btn.setAttribute('aria-expanded','false');
+        } else {
+          body.removeAttribute('hidden');
+          btn.setAttribute('aria-expanded','true');
+        }
+      });
+    });
+  }
+
+  // ===== Events =====
+  function wire(){
+    if(elTagSearch) elTagSearch.addEventListener('input', ()=>{ renderTags(); });
+    if(elClearTags) elClearTags.addEventListener('click', ()=>{
+      clearSelectedTags();
+      otherCatsUnlocked = false;
+      // estado inicial: todas las categorías "activas", pero solo se muestran tech/domain hasta desbloqueo
+      for(const c0 of Object.values(CAT)) visibleCats.add(c0);
+      updateCatButtonsUI();
+      render();
+    });
+
+    if(elModeToggle){
+      elModeToggle.textContent = filterMode;
+      elModeToggle.addEventListener('click', ()=>{
+        filterMode = (filterMode === 'AND') ? 'OR' : 'AND';
+        elModeToggle.textContent = filterMode;
+        render();
+      });
+    }
+
+    if(elCatButtons && elCatButtons.length){
+      elCatButtons.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const cat = btn.getAttribute('data-cat');
+          if(!cat) return;
+
+          // En fase inicial, solo se pueden alternar Dominio/Tecnología
+          if(!otherCatsUnlocked && !isPrimaryCat(cat)) return;
+
+          if(visibleCats.has(cat)) visibleCats.delete(cat);
+          else visibleCats.add(cat);
+
+          // evita estado "nada visible"
+          if(!visibleCats.size){
+            for(const c of Object.values(CAT)) visibleCats.add(c);
+          }
+
+          // UI
+          updateCatButtonsUI();
+
+          renderTags();
+        });
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    otherCatsUnlocked = false;
+    updateCatButtonsUI();
+    // ===== Print mode (?print=tag): imprime relación agrupada por Tag =====
+    function renderPrintByTag(){
+      const container = document.createElement('div');
+      container.className = 'printWrap';
+      const h1 = document.createElement('h1');
+      h1.textContent = 'Cursos impartidos (agrupados por Tag)';
+      container.appendChild(h1);
+
+      const map = new Map();
+      for(const c of allCourses){
+        const entries = getCourseTagEntries(c);
+        for(const e of entries){
+          const key = e.key;
+          if(!key) continue;
+          if(!map.has(key)) map.set(key, { label: e.label, items: [] });
+          map.get(key).items.push(c);
+        }
+      }
+
+      const keys = Array.from(map.keys()).sort((a,b)=>{
+        const la = map.get(a)?.label || a;
+        const lb = map.get(b)?.label || b;
+        return la.localeCompare(lb,'es',{sensitivity:'base'});
+      });
+
+      for(const k of keys){
+        const title = document.createElement('h2');
+        title.textContent = map.get(k)?.label || k;
+        container.appendChild(title);
+
+        const table = document.createElement('table');
+        table.className = 'printTable';
+        table.innerHTML = `
+          <thead>
+            <tr>
+              <th>Año</th>
+              <th>Curso</th>
+              <th>Horas</th>
+              <th>Cliente</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        `;
+        const tbody = table.querySelector('tbody');
+
+        const items = (map.get(k)?.items || []).slice().sort((a,b)=>{
+          const ay=parseInt(a.year,10)||0, by=parseInt(b.year,10)||0;
+          if(by!==ay) return by-ay;
+          return String(a.title||'').localeCompare(String(b.title||''),'es',{sensitivity:'base'});
+        });
+
+        for(const c of items){
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${esc(c.year||'')}</td>
+            <td>${esc(c.title||'')}</td>
+            <td>${esc(num(c.hours_per_edition||0) ? (num(c.hours_per_edition||0)+'h') : '')}</td>
+            <td>${esc(c.client||'')}</td>
+          `;
+          tbody.appendChild(tr);
+        }
+        container.appendChild(table);
+      }
+
+      document.body.innerHTML = '';
+      document.body.appendChild(container);
+      setTimeout(()=>{ window.print(); }, 200);
+    }
+
+    try {
+      const sp = new URLSearchParams(location.search);
+      const p = (sp.get('print')||'').toLowerCase();
+      if(p === 'tag' || p === 'type'){
+        renderPrintByTag();
+        return;
+      }
+    } catch(_e){}
+
+    wire();
+    render();
+  });
+
+
+// ===== PRINT SELECTION (FIXED INSIDE SCOPE) =====
+const elPrint = document.getElementById('printSelection');
+
+if(elPrint){
+  elPrint.addEventListener('click', ()=>{
+    const filtered = allCourses.filter(courseMatches);
+    printCoursesByTechnology(filtered);
+  });
+}
+
+function printCoursesByTechnology(courses){
+
+  const groups = new Map();
+
+  for(const c of courses){
+    const entries = getCourseTagEntries(c).filter(t => t.cat === 'Tecnología');
+    for(const t of entries){
+      if(!groups.has(t.label)) groups.set(t.label, []);
+      groups.get(t.label).push(c);
+    }
+  }
+
+  const win = window.open('', '_blank');
+
+  let html = `
+  <html>
+  <head>
+  <title>Informe de Cursos</title>
+  <style>
+  body{font-family:Arial;padding:30px;}
+  h1{margin-bottom:30px;}
+  h2{margin-top:30px;border-bottom:1px solid #ccc;padding-bottom:6px;}
+  ul{margin:8px 0 20px 20px;}
+  </style>
+  </head>
+  <body>
+  <h1>Informe de Cursos por Tecnología</h1>
+  `;
+
+  const ordered = Array.from(groups.keys()).sort((a,b)=>
+    a.localeCompare(b,'es',{sensitivity:'base'})
+  );
+
+  for(const tech of ordered){
+    html += `<h2>${tech}</h2><ul>`;
+    const titles = new Set(groups.get(tech).map(c=>c.title));
+    for(const t of titles){
+      html += `<li>${t}</li>`;
+    }
+    html += `</ul>`;
+  }
+
+  html += `</body></html>`;
+
+  win.document.write(html);
+  win.document.close();
+  win.focus();
+  win.print();
+}
+
+})();

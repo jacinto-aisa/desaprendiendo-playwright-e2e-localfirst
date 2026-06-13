@@ -1,0 +1,46 @@
+@import url("./base.css");
+
+/* index.css — overrides específicos de la página (si se necesitan) */
+
+/* ===== HERO BUTTONS: white bg + black text (premium) ===== */
+.heroButtons {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.heroButtons .heroBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 22px;
+  border-radius: 18px;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  color: #111;
+  background: #fff;
+  border: 1px solid rgb(0 0 0 / 12%);
+  box-shadow: 0 22px 60px rgb(0 0 0 / 18%);
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.heroButtons .heroBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 30px 70px rgb(0 0 0 / 26%);
+}
+
+.heroButtons .heroBtn:active {
+  transform: translateY(0) scale(0.99);
+}
+
+@media (width <=640px) {
+  .heroButtons .heroBtn {
+    flex: 100%;
+  }
+}
