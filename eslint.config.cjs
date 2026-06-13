@@ -18,8 +18,8 @@ module.exports = [
       'coverage/**',
       'dist/**',
       'mocks/**/*.har',
-      'mocks/**/*.har.zip'
-    ]
+      'mocks/**/*.har.zip',
+    ],
   },
 
   {
@@ -29,40 +29,51 @@ module.exports = [
       sourceType: 'module',
       globals: {
         ...globals.browser,
-        ...globals.node
-      }
+        ...globals.node,
+      },
     },
     rules: {
-      ...js.configs.recommended.rules
-    }
+      ...js.configs.recommended.rules,
+    },
   },
 
   {
-    files: ['web-local/assets/js/**/*.js'],
+    files: ['eslint.config.cjs', '*.config.cjs'],
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'script',
+      sourceType: 'commonjs',
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+
+  {
+    files: ['web-local/**/*.js'],
+    ignores: ['web-local/harness.js'],
+    languageOptions: {
       globals: {
         ...globals.browser,
-        SITE_DATA: 'readonly'
-      }
+        SITE_DATA: 'readonly',
+      },
     },
+    
     rules: {
       'no-unused-vars': [
         'warn',
         {
           argsIgnorePattern: '^_',
           varsIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^_'
-        }
+          caughtErrorsIgnorePattern: '^_',
+        },
       ],
       'no-empty': [
         'warn',
         {
-          allowEmptyCatch: true
-        }
-      ]
-    }
+          allowEmptyCatch: true,
+        },
+      ],
+    },
   },
 
   {
@@ -71,9 +82,12 @@ module.exports = [
       ecmaVersion: 'latest',
       sourceType: 'commonjs',
       globals: {
-        ...globals.node
-      }
-    }
+        ...globals.node,
+      },
+    },
+    rules: {
+      'no-redeclare': 'off',
+    },
   },
 
   ...tsRecommended,
@@ -84,8 +98,8 @@ module.exports = [
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
-        ...globals.node
-      }
+        ...globals.node,
+      },
     },
     rules: {
       'no-unused-vars': 'off',
@@ -94,16 +108,16 @@ module.exports = [
         {
           argsIgnorePattern: '^_',
           varsIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^_'
-        }
-      ]
-    }
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
+    },
   },
 
   {
     files: ['tests/**/*.ts'],
     plugins: {
-      playwright
+      playwright,
     },
     rules: {
       ...playwright.configs['flat/recommended'].rules,
@@ -112,8 +126,16 @@ module.exports = [
       'playwright/no-skipped-test': 'warn',
       'playwright/prefer-web-first-assertions': 'error',
 
+      /*
+       * En este proyecto muchas assertions viven dentro de Page Objects,
+       * Component Objects y Flows.
+       */
       'playwright/expect-expect': 'off',
-      'playwright/consistent-spacing-between-blocks': 'off'
-    }
-  }
+
+      /*
+       * Regla estética. No bloquea la práctica.
+       */
+      'playwright/consistent-spacing-between-blocks': 'off',
+    },
+  },
 ];
