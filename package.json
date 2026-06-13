@@ -20,9 +20,11 @@
     "quality:css": "npm run lint:css",
     "quality:full": "npm run lint && npm run validate:html && npm run lint:css && npm run lint:playwright",
     "lint:strict": "eslint **/*.{js,mjs,cjs,ts} --max-warnings=0",
-    "quality": "npm run lint && npm run validate:html && npm run lint:css",
+    "quality": "npm run lint && npm run validate:html && npm run lint:css && npm run lint:playwright",
     "quality:playwright": "npm run lint:playwright",
-    "quality:strict": "npm run lint:strict && npm run validate:html && npm run lint:css"
+    "quality:strict": "npm run lint:strict && npm run validate:html && npm run lint:css",
+    "lint:playwright": "eslint \"tests/**/*.ts\"",
+    "lint:playwright:strict": "eslint \"tests/**/*.ts\" --max-warnings=0"
   },
   "keywords": [],
   "author": "",
