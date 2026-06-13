@@ -1,0 +1,8 @@
+import { Page } from '@playwright/test';
+import { PaginaBase } from './PaginaBase';
+
+export class PagClientes extends PaginaBase {
+  constructor(page: Page) {
+    super(page, '/clientes.html', 'Clientes');
+  }
+}

@@ -1,0 +1,15 @@
+import { Locator } from "@playwright/test";
+
+export class FotoJacintoComponent {
+  constructor(private readonly root: Locator) {}
+
+  async openDetail() {
+    await this.root.getByRole('button', {
+      name: /ver detalle/i
+    }).click();
+  }
+
+  title() {
+    return this.root.getByRole('heading');
+  }
+}

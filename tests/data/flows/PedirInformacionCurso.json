@@ -1,0 +1,8 @@
+{
+  "nombre": "pedirInformacionCurso",
+  "descripcion": "Selecciona filtros en cursos graph, despliega un grupo y solicita información de un curso.",
+  "paginaInicial": "/cursos_graph.html",
+  "burbujas": [1, 2, 1],
+  "grupo": 2,
+  "accionFinal": "solicitarPrimerCurso"
+}

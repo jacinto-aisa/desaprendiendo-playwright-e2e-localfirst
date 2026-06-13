@@ -1,0 +1,20 @@
+
+import { PedirInformacionCursoBuilder } from '../data/flows/PedirInformacionCursoBuilder';
+import { test, expect } from '../fixtures/AppFixtures';
+
+
+const escenario = PedirInformacionCursoBuilder
+  .unEscenario()
+  .seleccionandoBurbujas(1, 2, 1)
+  .desplegandoGrupo(2)
+  .conAccionFinal('solicitarPrimerCurso')
+  .build();
+
+test('permite pedir información de un curso desde cursos graph', async ({
+  pedirInformacionCursoFlow,  page,
+}) => {
+  await pedirInformacionCursoFlow.pedirInformacionCurso(escenario);
+
+  // Verificar que se está intentando mandar un correo con la información del curso solicitado
+  await expect(page).toHaveURL(/cursos_graph\.html$/);
+});

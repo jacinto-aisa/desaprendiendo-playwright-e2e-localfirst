@@ -1,0 +1,45 @@
+@import url("./base.css");
+
+.jardin-hero .heroTop{grid-template-columns:1.05fr .95fr;align-items:stretch;}
+.jardinIntro{display:flex;flex-direction:column;justify-content:center;}
+.jardinActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;}
+.jardinBtn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:16px;border:1px solid rgba(24,184,200,.38);background:rgba(24,184,200,.14);color:var(--text);font-weight:850;transition:transform .16s ease,background .16s ease,border-color .16s ease;}
+.jardinBtn:hover{transform:translateY(-2px);background:rgba(24,184,200,.22);border-color:rgba(24,184,200,.72);}
+.jardinBtn.secondary{color:var(--muted);background:rgba(255,255,255,.04);border-color:var(--border);}
+.jardinBtn.secondary:hover{color:var(--text);}
+.heroGarden{min-height:100%;border:1px solid rgba(24,184,200,.25);border-radius:var(--radius);background:radial-gradient(520px 260px at 90% 0%,rgba(24,184,200,.23),transparent 60%),rgba(0,0,0,.18);padding:24px;display:grid;align-content:center;position:relative;overflow:hidden;}
+.heroGarden:before{content:"";position:absolute;right:-58px;bottom:-58px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(24,184,200,.23);}
+.gardenWord{position:relative;font-size:clamp(42px,7vw,86px);font-weight:950;letter-spacing:-.07em;line-height:.9;color:var(--text);}
+.heroGarden p{position:relative;margin:20px 0 0;color:var(--muted);font-size:16px;line-height:1.55;font-weight:650;}
+.span-7{grid-column:span 7;}
+.span-5{grid-column:span 5;}
+.metricCard{min-height:142px;display:grid;align-content:start;gap:10px;}
+.metricCard strong{font-size:20px;}
+.metricCard span{color:var(--muted);line-height:1.5;}
+.jardinSteps{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:16px;}
+.step{min-height:210px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.035);padding:16px;position:relative;overflow:hidden;}
+.step:before{content:"";position:absolute;left:16px;right:16px;top:0;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--primary),transparent);}
+.step b{display:grid;place-items:center;width:46px;height:46px;border-radius:16px;background:rgba(24,184,200,.15);border:1px solid rgba(24,184,200,.32);color:var(--primary);font-size:21px;margin-bottom:18px;}
+.step strong{display:block;font-size:17px;margin-bottom:10px;}
+.step span{display:block;color:var(--muted);font-size:13px;line-height:1.45;}
+.moduleList{display:grid;gap:12px;margin-top:14px;}
+.moduleList div{padding:13px 14px;border-radius:16px;border:1px solid var(--border);background:rgba(0,0,0,.17);}
+.moduleList b{display:block;margin-bottom:5px;}
+.moduleList span{display:block;color:var(--muted);font-size:14px;line-height:1.45;}
+.labCard{background:radial-gradient(520px 280px at 95% 0%,rgba(24,184,200,.16),transparent 60%),rgba(255,255,255,.035);}
+.labCard h2{font-size:28px;line-height:1.1;margin-top:10px;}
+.labCard p{font-size:15px;}
+.labFlow{display:grid;grid-template-columns:1fr;gap:10px;margin-top:20px;}
+.labFlow span{padding:12px 14px;border-radius:999px;border:1px solid rgba(24,184,200,.26);background:rgba(24,184,200,.09);color:var(--text);font-weight:850;}
+.checkList{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:10px;}
+.checkList li{position:relative;padding-left:28px;color:var(--muted);line-height:1.55;}
+.checkList li:before{content:"✓";position:absolute;left:0;top:0;color:var(--primary);font-weight:900;}
+.jardinStrip{margin-top:16px;border:1px solid rgba(24,184,200,.25);border-radius:calc(var(--radius) + 2px);background:linear-gradient(90deg,rgba(24,184,200,.12),rgba(255,255,255,.035));padding:22px;display:flex;align-items:center;justify-content:space-between;gap:18px;}
+.jardinStrip b{display:block;font-size:22px;margin-bottom:8px;}
+.jardinStrip span{display:block;color:var(--muted);line-height:1.5;max-width:75ch;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;}
+.reveal.on{opacity:1;transform:none;}
+@media (max-width:1060px){.jardinSteps{grid-template-columns:repeat(3,1fr);}.jardin-hero .heroTop{grid-template-columns:1fr;}}
+@media (max-width:860px){.span-7,.span-5{grid-column:span 12;}.jardinStrip{align-items:flex-start;flex-direction:column;}.jardinStrip .jardinBtn{width:100%;}.jardinSteps{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:620px){.jardinSteps{grid-template-columns:1fr;}.jardinActions .jardinBtn{width:100%;}.step{min-height:auto;}.gardenWord{font-size:46px;}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important;}.reveal{opacity:1;transform:none;}}

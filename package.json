@@ -1,0 +1,40 @@
+{
+  "name": "e2edesaprendiendo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "serve:portfolio": "http-server ./web-local -p 4173 -c-1",
+    "test:e2e": "playwright test",
+    "test:e2e:prod": "cross-env E2E_TARGET=prod playwright test",
+    "test:e2e:local": "cross-env E2E_TARGET=local playwright test",
+    "test:e2e:prod:headed": "cross-env E2E_TARGET=prod playwright test --headed",
+    "test:e2e:local:headed": "cross-env E2E_TARGET=local playwright test --headed",
+    "test:e2e:ui": "playwright test --ui",
+    "report:e2e": "playwright show-report",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
+    "lint:tests": "eslint \"tests/**/*.ts\" --max-warnings=0",
+    "lint:web": "eslint \"web-local/**/*.js\" --max-warnings=0",
+    "validate:html": "html-validate \"web-local/**/*.html\"",
+    "lint:css": "stylelint \"web-local/**/*.css\"",
+    "quality": "npm run lint && npm run validate:html && npm run lint:css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.2",
+    "cross-env": "^10.1.0",
+    "eslint": "^10.5.0",
+    "eslint-plugin-playwright": "^2.10.4",
+    "globals": "^17.6.0",
+    "html-validate": "^11.5.3",
+    "http-server": "^14.1.1",
+    "stylelint": "^17.13.0",
+    "stylelint-config-standard": "^40.0.0",
+    "typescript-eslint": "^8.61.0"
+  }
+}

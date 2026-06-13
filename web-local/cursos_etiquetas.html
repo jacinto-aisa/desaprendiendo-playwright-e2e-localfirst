@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Cursos etiquetas · Jacinto Aisa Ibañez</title>
+<link href="assets/css/cursos.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="nav">
+        <div class="container">
+            <a class="brand" href="index.html">
+                <img alt="desaprendiendo" src="assets/img/logo_mark.png" />
+            </a>
+            <div class="pills" aria-label="Navegación principal">
+                <a class="pill" href="index.html">Inicio</a>
+                <a class="pill" href="metodo_docente.html">Método</a>
+                <a class="pill" href="jardin.html">JARDIN</a>
+                <a class="pill" href="experiencia.html">Experiencia</a>
+                <a class="pill active" href="cursos_etiquetas.html">Cursos etiquetas</a>
+                <a class="pill" href="cursos_graph.html">Cursos graph</a>
+                <a class="pill" href="clientes.html">Clientes</a>
+                <a class="pill" href="certificaciones.html">Certificaciones</a>
+            </div>
+        </div>
+    </div>
+<div class="container">
+<div class="hero">
+<div class="heroTop heroTop--tags">
+<div class="heroCol heroCol--left">
+<h1>Cursos etiquetas</h1>
+<p class="sub">Explora el catálogo por <strong>tags</strong> (tecnología, dominio, nivel, rol y cliente). Selecciona varios con <kbd>Shift</kbd> y filtra como en una web profesional.</p>
+
+<div class="viewToggle" aria-label="Cambiar modo de ">
+  <span class="viewToggle__label"></span>
+  <button class="viewToggle__btn is-on" id="viewBtnButtons" type="button" aria-pressed="true" title=" por botones / nube">Botones</button>
+  <button class="viewToggle__btn" id="viewBtnGraph" type="button" aria-pressed="false" title=" gráfica (burbujas)">Gráfica</button>
+  <span class="viewToggle__hint">(cambia solo la forma de seleccionar; al cambiar se reinicia el filtro)</span>
+</div>
+</div>
+
+<div class="heroCol heroCol--right">
+<div class="tagCloud" aria-label="Filtro por tags">
+  <div class="tagCloud__legendRow" aria-label="Leyenda y acciones">
+    <div class="tagLegend" aria-label="Leyenda de categorías">
+      <span class="legendItem" data-cat="Tecnología"><span class="dot" aria-hidden="true"></span>Tecnología</span>
+      <span class="legendItem" data-cat="Dominio"><span class="dot" aria-hidden="true"></span>Dominio</span>
+      <span class="legendItem" data-cat="Nivel"><span class="dot" aria-hidden="true"></span>Nivel</span>
+      <span class="legendItem" data-cat="Rol"><span class="dot" aria-hidden="true"></span>Rol</span>
+      <span class="legendItem" data-cat="Cliente"><span class="dot" aria-hidden="true"></span>Cliente</span>
+    </div>
+    <button class="resetBtn" id="clearTags" type="button" title="Reiniciar filtros" aria-label="Reiniciar filtros">♻</button>
+    <button class="resetBtn" id="printSelection" type="button" title="Imprimir selección" aria-label="Imprimir selección">🖨</button>
+  </div>
+  <div class="tagCloud__cats" aria-label="Filtrar nube por categoría">
+    <button class="catBtn active" data-cat="Tecnología" type="button" aria-pressed="true" title="Mostrar/ocultar tags de Tecnología">Tecnología</button>
+    <button class="catBtn active" data-cat="Dominio" type="button" aria-pressed="true" title="Mostrar/ocultar tags de Dominio">Dominio</button>
+    <button class="catBtn active" data-cat="Nivel" type="button" aria-pressed="true" title="Mostrar/ocultar tags de Nivel">Nivel</button>
+    <button class="catBtn active" data-cat="Rol" type="button" aria-pressed="true" title="Mostrar/ocultar tags de Rol">Rol</button>
+    <button class="catBtn active" data-cat="Cliente" type="button" aria-pressed="true" title="Mostrar/ocultar tags de Cliente">Cliente</button>
+  </div>
+  <div class="tagCloud__list" id="tagCloud"></div>
+  <div class="kpis kpis--compact kpis--horizontal" aria-label="Indicadores del catálogo">
+  <div class="kpi"><div class="n" id="kpiEditions">—</div><div class="l">Ediciones impartidas</div></div>
+  <div class="kpi"><div class="n" id="kpiDistinctTitles">—</div><div class="l">Títulos distintos</div></div>
+  <div class="kpi"><div class="n" id="kpiTotalHours">—</div><div class="l">Horas impartidas (histórico)</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="sectionTitle">
+<h2>Listado</h2>
+</div>
+<div class="course-groups" id="courseGroups"></div></div>
+<div class="footer">© 2026 Jacinto Aisa Ibañez · desaprendiendo formación · Portfolio offline/host (sin dependencias de servidor).</div>
+</div>
+<div class="modal" id="modal">
+<button class="closeBtn" id="closeModal">Cerrar ✕</button>
+<div class="modalContent">
+<img alt="" id="modalImg" src=""/>
+</div>
+</div>
+<!-- Cache-bust data.js to ensure the latest file written by WinForms is loaded (file:// caching can be sticky) -->
+<script>
+  (function(){
+    var ts = Date.now();
+    document.write('<script src="data.js?ts=' + ts + '"><\\/script>');
+  })();
+</script>
+<script src="assets/js/base.js"></script>
+<script src="assets/js/cursos.js"></script>
+<script src="assets/js/cursos_view_toggle.js"></script>
+</body>
+</html>
