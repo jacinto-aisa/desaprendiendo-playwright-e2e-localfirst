@@ -1,26 +1,19 @@
-// tests/critical/contactoDirecto.spec.ts
-import {
-  test,
-  testsPorEntorno,
-} from '../support/DecoradorTestPorEntorno';
+import test from "@playwright/test";
+import { ContactoDirectoComponent } from "../com/ContactoDirectoComponent";
 
+// tests/critical/contactoDirecto.spec.ts
 const paginasConContactoDirecto = [
-  { nombre: 'Inicio', ruta: '/index.html' },
-  { nombre: 'Experiencia', ruta: '/experiencia.html' },
-  { nombre: 'Certificaciones', ruta: '/certificaciones.html' },
+  '/index.html',
+  '/experiencia.html',
+  '/certificaciones.html',
 ];
 
-testsPorEntorno.describeSoloLocalFirst(
-  'contacto directo local-first',
-  () => {
-    for (const pagina of paginasConContactoDirecto) {
-      test(`muestra contacto directo correcto en ${pagina.nombre}`, async ({
-        page,
-        contactoDirecto,
-      }) => {
-        await page.goto(pagina.ruta);
-        await contactoDirecto.deberiaPermitirContactoDirecto();
-      });
-    }
-  }
-);
+for (const ruta of paginasConContactoDirecto) {
+  test(`debería mostrar contacto directo en ${ruta}`, async ({ page }) => {
+    await page.goto(ruta);
+
+    const contactoDirecto = new ContactoDirectoComponent(page);
+
+    await contactoDirecto.deberiaPermitirContactoDirecto();
+  });
+}

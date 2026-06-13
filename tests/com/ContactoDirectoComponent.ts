@@ -12,45 +12,77 @@ export class ContactoDirectoComponent {
       .first();
   }
 
-  telefono(): Locator {
-    return this.root.getByText(/626\s*506\s*548|626506548/);
+  tarjeta(): Locator {
+    return this.root;
+  }
+
+  nombre(): Locator {
+    return this.root.getByText('Jacinto Aisa Ibañez', { exact: true });
   }
 
   enlaceCorreo(): Locator {
     return this.root.locator('a#cEmail1[href^="mailto:"]').first();
   }
 
-  async deberiaEstarVisible(): Promise<void> {
-    await expect(this.root).toBeVisible();
+  tituloProfesional(): Locator {
+    return this.root.getByText(/Executive Trainer/i);
   }
 
-  async deberiaMostrarTelefono(
+  async deberiaEstarVisible(): Promise<void> {
+    await expect(this.tarjeta()).toBeVisible();
+  }
+
+  async deberiaMostrarNombre(): Promise<void> {
+    await expect(this.nombre()).toBeVisible();
+  }
+
+  async deberiaMostrarTituloProfesional(): Promise<void> {
+    await expect(this.tituloProfesional()).toBeVisible();
+  }
+
+  async deberiaTenerHipervinculoCorreo(
+    correoEsperado: string = 'jacinto@desaprendiendo.net'
+  ): Promise<void> {
+    const enlace = this.enlaceCorreo();
+
+    await expect(enlace).toBeVisible();
+
+    await expect(enlace).toHaveAttribute(
+      'href',
+      new RegExp(`mailto:${correoEsperado}`, 'i')
+    );
+
+    await expect(enlace).toHaveText(correoEsperado);
+  }
+
+  async obtenerTelefonoDesdeDatos(): Promise<string> {
+    return await this.page.evaluate(() => {
+      const ventana = window as unknown as {
+        SITE_DATA?: {
+          person?: {
+            phone?: string;
+          };
+        };
+      };
+
+      return ventana.SITE_DATA?.person?.phone ?? '';
+    });
+  }
+
+  async deberiaTenerTelefonoConfigurado(
     telefonoEsperado: string = '626506548'
   ): Promise<void> {
-    await expect(this.telefono()).toBeVisible();
-
-    const textoTelefono = await this.telefono().innerText();
-    const telefonoNormalizado = textoTelefono.replace(/\D/g, '');
+    const telefono = await this.obtenerTelefonoDesdeDatos();
+    const telefonoNormalizado = telefono.replace(/\D/g, '');
 
     expect(telefonoNormalizado).toBe(telefonoEsperado);
   }
 
-  async deberiaTenerHipervinculoCorreo(
-  correoEsperado: string = 'jacinto@desaprendiendo.net'
-): Promise<void> {
-  const enlace = this.enlaceCorreo();
-
-  await expect(enlace).toBeVisible();
-
-  await expect(enlace).toHaveAttribute(
-    'href',
-    new RegExp(`mailto:${correoEsperado}`, 'i')
-  );
-}
-
   async deberiaPermitirContactoDirecto(): Promise<void> {
     await this.deberiaEstarVisible();
-    await this.deberiaMostrarTelefono();
+    await this.deberiaMostrarNombre();
+    await this.deberiaMostrarTituloProfesional();
     await this.deberiaTenerHipervinculoCorreo();
+    await this.deberiaTenerTelefonoConfigurado();
   }
 }
