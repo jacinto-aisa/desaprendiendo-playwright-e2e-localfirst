@@ -36,19 +36,17 @@ export class ContactoDirectoComponent {
   }
 
   async deberiaTenerHipervinculoCorreo(
-    correoEsperado: string = 'jacinto@desaprendiendo.net'
-  ): Promise<void> {
-    const enlace = this.enlaceCorreo();
+  correoEsperado: string = 'jacinto@desaprendiendo.net'
+): Promise<void> {
+  const enlace = this.enlaceCorreo();
 
-    await expect(enlace).toBeVisible();
+  await expect(enlace).toBeVisible();
 
-    const href = await enlace.getAttribute('href');
-
-    expect(href).toBeTruthy();
-    expect(href!.toLowerCase()).toContain(
-      `mailto:${correoEsperado}`.toLowerCase()
-    );
-  }
+  await expect(enlace).toHaveAttribute(
+    'href',
+    new RegExp(`mailto:${correoEsperado}`, 'i')
+  );
+}
 
   async deberiaPermitirContactoDirecto(): Promise<void> {
     await this.deberiaEstarVisible();
