@@ -1,6 +1,7 @@
 {
-  "extends": ["html-validate:recommended"],
-  "level": "warn",
+  "extends": [
+    "html-validate:recommended"
+  ],
   "rules": {
     "doctype-style": "off",
     "void-style": "off",
@@ -13,3 +14,4 @@
     "require-sri": "off"
   }
 }
+
