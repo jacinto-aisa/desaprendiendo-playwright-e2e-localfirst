@@ -15,7 +15,7 @@
   }
   function norm(s){
     s=String(s||'').trim().toLowerCase();
-    try{ s=s.normalize('NFD').replace(/[\u0300-\u036f]/g,''); }catch(e){}
+    try{ s=s.normalize('NFD').replace(/[\u0300-\u036f]/g,''); }catch(_e){}
     return s.replace(/\s+/g,' ');
   }
 

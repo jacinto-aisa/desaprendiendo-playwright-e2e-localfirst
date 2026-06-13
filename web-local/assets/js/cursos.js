@@ -22,7 +22,7 @@
   }
   function fmtInt(n){
     try { return new Intl.NumberFormat('es-ES').format(Math.round(n)); }
-    catch(e){ return String(Math.round(n)); }
+    catch(_e){ return String(Math.round(n)); }
   }
 
   // Animación suave de contadores (KPIs / resultados)
@@ -32,7 +32,7 @@
     const duration = Math.max(180, Math.min(900, opts.duration || 340));
 
     const prevRaw = (el.dataset.prevValue !== undefined) ? el.dataset.prevValue : String(el.textContent||'');
-    const prevNum = parseFloat(String(prevRaw).replace(/[\s\.]/g,'').replace(',', '.').replace(/[^0-9\.-]/g,'')) || 0;
+    const prevNum = parseFloat(String(prevRaw).replace(/[\s.]/g,'').replace(',', '.').replace(/[^0-9.-]/g,'')) || 0;
     const nextNum = Number(to) || 0;
 
     // Evita trabajo si no cambia
@@ -65,7 +65,7 @@
   }
   function norm(s){
     s = String(s||'').trim().toLowerCase();
-    try { s = s.normalize('NFD').replace(/[\u0300-\u036f]/g,''); } catch(e){}
+    try { s = s.normalize('NFD').replace(/[\u0300-\u036f]/g,''); } catch(_e){}
     s = s.replace(/\s+/g,' ');
     return s;
   }
@@ -88,18 +88,6 @@
     return best || (arr[0] ? String(arr[0].title||'') : '');
   }
 
-  function uniq(arr){
-    const out=[]; const seen=new Set();
-    for(const v of arr){
-      const s=String(v||'').trim();
-      if(!s) continue;
-      const k=norm(s);
-      if(seen.has(k)) continue;
-      seen.add(k);
-      out.push(s);
-    }
-    return out;
-  }
 
   // ===== DOM refs =====
   const elCount = $('#coursesCount');
@@ -196,38 +184,6 @@ function tagCategory(label){
 // Map normalized tag -> display tag (primera aparición)
 const tagLabelMap = new Map();
 
-const CANON = {
-  'programacion': 'Programación',
-  'programación': 'Programación',
-  'administracion': 'Administración',
-  'administración': 'Administración',
-  'seguridad': 'Seguridad',
-  'datos': 'Datos',
-  'sistemas': 'Sistemas',
-  'tuning': 'Tuning SQL',
-  'tunning': 'Tuning SQL',
-  'bi': 'BI'
-};
-
-function canonTag(t){
-  const raw = String(t||'').trim();
-  if(!raw) return '';
-  const k = norm(raw);
-  return CANON[k] || raw;
-}
-
-function uniq(arr){
-  const out=[]; const seen=new Set();
-  for(const v of arr){
-    const s=String(v||'').trim();
-    if(!s) continue;
-    const k=norm(s);
-    if(seen.has(k)) continue;
-    seen.add(k);
-    out.push(s);
-  }
-  return out;
-}
 
 function getCourseTagEntries(c){
   const entries = [];
@@ -728,7 +684,7 @@ Gracias.`;
         renderPrintByTag();
         return;
       }
-    } catch(e){}
+    } catch(_e){}
 
     wire();
     render();

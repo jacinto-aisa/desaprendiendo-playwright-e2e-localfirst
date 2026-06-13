@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function(){
   }
   function formatInt(n){
     try { return new Intl.NumberFormat('es-ES').format(Math.round(n)); }
-    catch(e){ return String(Math.round(n)); }
+    catch(_e){ return String(Math.round(n)); }
   }
   function animateCount(el, target, opts){
     opts = opts || {};

@@ -7,7 +7,6 @@
   const D = window.SITE_DATA || {};
   const allCourses = Array.isArray(D.courses) ? D.courses : [];
 
-  const $  = (s, el=document)=>el.querySelector(s);
   const $$ = (s, el=document)=>Array.from(el.querySelectorAll(s));
 
   function esc(s){
@@ -33,11 +32,11 @@
   }
   function fmtInt(n){
     try { return new Intl.NumberFormat('es-ES').format(Math.round(n)); }
-    catch(e){ return String(Math.round(n)); }
+    catch(_e){ return String(Math.round(n)); }
   }
   function norm(s){
     s = String(s||'').trim().toLowerCase();
-    try { s = s.normalize('NFD').replace(/[\u0300-\u036f]/g,''); } catch(e){}
+    try { s = s.normalize('NFD').replace(/[\u0300-\u036f]/g,''); } catch(_e){}
     s = s.replace(/\s+/g,' ');
     return s;
   }
@@ -253,34 +252,9 @@ const elKpiEditions = document.getElementById('kpiEditions');
   function setSelectedDomainUI(){
     if(!elSelectedDomainBar) return;
 
-    // Se elimina la indicación dentro del canvas: la selección ya se muestra arriba.
+    // La selección ya se muestra en el bloque de seleccionados, no dentro del canvas.
     elSelectedDomainBar.hidden = true;
-    return;
-
-    const labelEl = elSelectedDomainBar.querySelector('.bubbleOverlay__centerLabel');
-    const hasDomain = !!selectedDomainLabel;
-    const hasTech = !!selectedTechLabel;
-
-    if(!hasDomain && !hasTech){
-      elSelectedDomainBar.hidden = true;
-      if(elSelectedDomainText) elSelectedDomainText.textContent = '';
-      if(labelEl) labelEl.textContent = 'Selección:';
-      return;
-    }
-
-    elSelectedDomainBar.hidden = false;
-
-    if(labelEl){
-      if(hasDomain && hasTech) labelEl.textContent = 'Dominio / Tecnología:';
-      else if(hasDomain) labelEl.textContent = 'Dominio:';
-      else labelEl.textContent = 'Tecnología:';
-    }
-
-    if(elSelectedDomainText){
-      if(hasDomain && hasTech) elSelectedDomainText.textContent = `${selectedDomainLabel} · ${selectedTechLabel}`;
-      else if(hasDomain) elSelectedDomainText.textContent = selectedDomainLabel;
-      else elSelectedDomainText.textContent = selectedTechLabel;
-    }
+    if(elSelectedDomainText) elSelectedDomainText.textContent = '';
   }
 
   // ===== KPI anim =====
@@ -622,16 +596,11 @@ const elKpiEditions = document.getElementById('kpiEditions');
       const c = ch.getAttribute('data-cat');
       ch.classList.toggle('is-on', c === visibleCategory);
 
-      let enabled = true;
-
-    if(stage === 0){
-        enabled = (c === 'all' || c === p);
-      }else if(stage === 1){
-        enabled = (c === s);
-      }else{
-        // En la fase final no mostramos ni 'domain' ni 'tech' (quedan fijados en seleccionados)
-        enabled = (c !== 'domain' && c !== 'tech');
-      }
+      const enabled = stage === 0
+        ? (c === 'all' || c === p)
+        : stage === 1
+          ? (c === s)
+          : (c !== 'domain' && c !== 'tech');
 
       ch.classList.toggle('is-disabled', !enabled);
       ch.setAttribute('aria-disabled', enabled ? 'false' : 'true');
@@ -958,17 +927,14 @@ if(stage >= 2 && selected.size){
     categoryChips.forEach(btn=>{
       btn.addEventListener('click', ()=>{
         const cat = btn.getAttribute('data-cat');
-        let enabled = true;
         const p = primaryCat();
         const s = secondaryCat();
+        const enabled = stage === 0
+          ? (cat === 'all' || cat === p)
+          : stage === 1
+            ? (cat === s)
+            : (cat !== 'domain' && cat !== 'tech');
 
-    if(stage === 0){
-          enabled = (cat === 'all' || cat === p);
-        }else if(stage === 1){
-          enabled = (cat === s);
-        }else{
-          enabled = (cat !== 'domain' && cat !== 'tech');
-        }
         if(!enabled) return;
         visibleCategory = cat || 'all';
         updateChipsUI();
@@ -1041,13 +1007,13 @@ try{
   if(help && right && bubbleHost){
     right.insertBefore(help, bubbleHost);
   }
-}catch(e){}
+}catch(_e){}
 
 // Quitar indicaciones de sección dentro del canvas (la selección ya se ve en "seleccionados")
 try{
   const meta = document.getElementById('bubbleMeta');
   if(meta) meta.hidden = true;
-}catch(e){}
+}catch(_e){}
 
     // estado inicial (todas las burbujas visibles)
     selected.clear();
