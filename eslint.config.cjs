@@ -1,9 +1,14 @@
-import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import globals from 'globals';
-import playwright from 'eslint-plugin-playwright';
+const js = require('@eslint/js');
+const tseslint = require('typescript-eslint');
+const globals = require('globals');
+const playwright = require('eslint-plugin-playwright');
 
-export default [
+const tsRecommended = tseslint.configs.recommended.map((config) => ({
+  ...config,
+  files: ['**/*.ts'],
+}));
+
+module.exports = [
   {
     ignores: [
       'node_modules/**',
@@ -19,10 +24,13 @@ export default [
 
   {
     files: ['**/*.{js,mjs,cjs}'],
-    ...js.configs.recommended,
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'module'
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      }
     },
     rules: {
       ...js.configs.recommended.rules
@@ -68,21 +76,7 @@ export default [
     }
   },
 
-  {
-    files: ['*.config.{js,mjs,cjs}', 'eslint.config.mjs'],
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      globals: {
-        ...globals.node
-      }
-    }
-  },
-
-  ...tseslint.configs.recommended.map((config) => ({
-    ...config,
-    files: ['**/*.ts']
-  })),
+  ...tsRecommended,
 
   {
     files: ['**/*.ts'],
@@ -107,8 +101,10 @@ export default [
   },
 
   {
-    ...playwright.configs['flat/recommended'],
     files: ['tests/**/*.ts'],
+    plugins: {
+      playwright
+    },
     rules: {
       ...playwright.configs['flat/recommended'].rules,
 
@@ -116,15 +112,7 @@ export default [
       'playwright/no-skipped-test': 'warn',
       'playwright/prefer-web-first-assertions': 'error',
 
-      /*
-       * En este proyecto muchas assertions están dentro de Page Objects,
-       * Component Objects y Flows. Por eso evitamos falsos positivos.
-       */
       'playwright/expect-expect': 'off',
-
-      /*
-       * Regla puramente estética. La dejamos fuera para no bloquear.
-       */
       'playwright/consistent-spacing-between-blocks': 'off'
     }
   }
