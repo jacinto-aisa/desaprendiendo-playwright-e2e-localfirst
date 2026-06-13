@@ -1,4 +1,4 @@
-window.SITE_DATA = {
+globalThis.SITE_DATA = {
   "person": {
     "name": "Jacinto Aisa Iba\u00F1ez",
     "title": "Executive Trainer | Arquitectura Cloud (Azure) | .NET | Data/BI",
