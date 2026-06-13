@@ -17,7 +17,9 @@
     "lint:web": "eslint \"web-local/**/*.js\" --max-warnings=999",
     "validate:html": "html-validate \"web-local/**/*.html\"",
     "lint:css": "stylelint \"web-local/**/*.css\"",
-    "quality": "npm run lint && npm run validate:html && npm run lint:css"
+    "quality": "npm run lint && npm run validate:html",
+    "quality:css": "npm run lint:css",
+    "quality:full": "npm run lint && npm run validate:html && npm run lint:css"
   },
   "keywords": [],
   "author": "",
