@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-  <meta http-equiv="Pragma" content="no-cache"/>
-  <meta http-equiv="Expires" content="0"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cursos graph · Jacinto Aisa Ibañez</title>
-  <link rel="stylesheet" href="assets/css/cursos.css"/>
-  <link rel="stylesheet" href="assets/css/cursos_graph.css"/>
+  <link rel="stylesheet" href="assets/css/cursos.css">
+  <link rel="stylesheet" href="assets/css/cursos_graph.css">
 </head>
 <body class="cursosGraph">
       <div class="nav">
         <div class="container">
             <a class="brand" href="index.html">
-                <img alt="desaprendiendo" src="assets/img/logo_mark.png" />
+                <img alt="desaprendiendo" src="assets/img/logo_mark.png">
             </a>
-            <div class="pills" aria-label="Navegación principal">
+            <div class="pills" aria-label="Navegación principal" role="navigation">
                 <a class="pill" href="index.html">Inicio</a>
                 <a class="pill" href="metodo_docente.html">Método</a>
                 <a class="pill" href="jardin.html">JARDIN</a>
@@ -36,7 +36,7 @@
         <h1>Cursos graph</h1>
         <p class="sub">Filtra por etiquetas con un mapa de burbujas: el tamaño indica cuántas veces aparece un tag (en las ediciones que hay en el dataset). Click para seleccionar; ♻ para reiniciar.</p>
 
-        <div class="viewToggle" aria-label="Cambiar modo de ">
+        <div class="viewToggle" aria-label="Cambiar modo de " role="group">
           <span class="viewToggle__label"></span>
           <button class="viewToggle__btn" id="viewBtnButtons" type="button" aria-pressed="false" title=" por botones / nube">Botones</button>
           <button class="viewToggle__btn is-on" id="viewBtnGraph" type="button" aria-pressed="true" title=" gráfica (burbujas)">Gráfica</button>
@@ -67,12 +67,12 @@
 
       <div class="right">
         <div class="tagTop">
-          
+
         </div>
 
         <div class="bubbleHost" id="bubbleHost">
-          
-          <div class="bubbleOverlay" id="bubbleOverlay" aria-label="Controles del visor">
+
+          <div class="bubbleOverlay" id="bubbleOverlay" aria-label="Controles del visor" role="group">
             <div class="bubbleOverlay__left">
             <div class="bubbleOverlay__leftRow">
               <button class="reset" id="undoStep" title="Volver al paso anterior" aria-label="Volver al paso anterior" type="button">↩</button>
@@ -81,12 +81,12 @@
               <button class="clientToggle__btn is-on" id="toggleClients" type="button" aria-pressed="true" title="Mostrar u ocultar clientes">Clientes</button>
             </div>
 </div>
-            <div class="bubbleOverlay__right" id="bubbleMeta" aria-label="Información de etiqueta">
+            <div class="bubbleOverlay__right" id="bubbleMeta" aria-label="Información de etiqueta" role="group">
               <span class="bubbleMeta__dot" id="bubbleMetaDot" aria-hidden="true"></span>
               <span class="bubbleMeta__text" id="bubbleMetaText">tecnologías</span>
             </div>
           </div>
-          <div class="bubbleLegend" id="bubbleLegend" aria-label="Leyenda de categorías">
+          <div class="bubbleLegend" id="bubbleLegend" aria-label="Leyenda de categorías" role="group">
             <div class="bubbleLegend__title">Categorías</div>
             <div class="bubbleLegend__items">
               <span class="lg lg-tech"><span class="dot" aria-hidden="true"></span>Tecnología</span>
