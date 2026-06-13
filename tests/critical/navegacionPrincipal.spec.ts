@@ -1,12 +1,6 @@
 import { test,expect } from '../fixtures/AppFixtures';
 import { testsPorEntorno } from '../support/DecoradorTestPorEntorno';
 
-const paginasConContactoDirecto = [
-  { nombre: 'Inicio', ruta: '/index.html' },
-  { nombre: 'Experiencia', ruta: '/experiencia.html' },
-  { nombre: 'Certificaciones', ruta: '/certificaciones.html' },
-];
-
 test.describe('navegacion principal', () => {
   test.beforeEach(async ({pagInicio}) => {
     expect(await pagInicio.open()).toBeTruthy();
