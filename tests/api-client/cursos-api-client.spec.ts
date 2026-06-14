@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/ApiFixtures';
+import { test, expect } from '@fixtures/ApiFixtures';
 
 test('API Client autenticado busca cursos Azure', async ({ cursosApi }) => {
   const cursos = await cursosApi.buscarPorTecnologia('Azure');

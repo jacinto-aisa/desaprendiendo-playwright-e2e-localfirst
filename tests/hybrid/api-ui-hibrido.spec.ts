@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { API_BASE_URL } from '../support/env';
+import { API_BASE_URL } from '@support/env';
 
 test('consulta API y valida que la UI local muestra formación relacionada', async ({ request, page }) => {
   const response = await request.get(`${API_BASE_URL}/api/cursos`, {

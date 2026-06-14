@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { API_BASE_URL } from '../support/env';
-import { obtenerToken } from '../support/auth';
+import { API_BASE_URL } from '@support/env';
+import { obtenerToken } from '@support/auth';
 
 test.describe('Iteración 09 · contrato, auth fake, OData y GraphQL', () => {
   test('valida contrato mínimo de cursos', async ({ request }) => {

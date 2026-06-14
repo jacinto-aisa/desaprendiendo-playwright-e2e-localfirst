@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { API_BASE_URL } from '../support/env';
+import { API_BASE_URL } from '@support/env';
+
 
 test.describe('Iteración 09 · verbos HTTP contra API local', () => {
   test('GET lee cursos por tecnología', async ({ request }) => {
