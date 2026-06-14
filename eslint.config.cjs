@@ -1,6 +1,6 @@
+const globals = require('globals');
 const js = require('@eslint/js');
 const tseslint = require('typescript-eslint');
-const globals = require('globals');
 const playwright = require('eslint-plugin-playwright');
 
 const tsRecommended = tseslint.configs.recommended.map((config) => ({
@@ -47,7 +47,6 @@ module.exports = [
       },
     },
   },
-
   {
     files: ['web-local/**/*.js'],
     ignores: ['web-local/harness.js'],
@@ -89,7 +88,19 @@ module.exports = [
       'no-redeclare': 'off',
     },
   },
-
+{
+  files: ['api-local/**/*.js'],
+  languageOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'commonjs',
+    globals: {
+      ...globals.node,
+    },
+  },
+  rules: {
+    'no-console': 'off',
+  },
+},
   ...tsRecommended,
 
   {
