@@ -1,13 +1,13 @@
 import { Page } from '@playwright/test';
 
-import { PagInicio } from '../pom/PagInicio';
-import { PagClientes } from '../pom/PagClientes';
-import { PagCertificaciones } from '../pom/PagCertificaciones';
-import { PagCursosEtiquetas } from '../pom/PagCursosEtiquetas';
-import { PagCursosGrafico } from '../pom/PagCursosGrafico';
-import { PagExperiencia } from '../pom/PagExperiencia';
-import { PagJardin } from '../pom/PagJardin';
-import { PagMetodo } from '../pom/PagMetodo';
+import { PagInicio } from '@pom/PagInicio';
+import { PagClientes } from '@pom/PagClientes';
+import { PagCertificaciones } from '@pom/PagCertificaciones';
+import { PagCursosEtiquetas } from '@pom/PagCursosEtiquetas';
+import { PagCursosGrafico } from '@pom/PagCursosGrafico';
+import { PagExperiencia } from '@pom/PagExperiencia';
+import { PagJardin } from '@pom/PagJardin';
+import { PagMetodo } from '@pom/PagMetodo';
 
 export class FabricaPaginas {
   constructor(private readonly page: Page) {}

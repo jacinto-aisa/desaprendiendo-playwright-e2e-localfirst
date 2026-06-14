@@ -1,5 +1,5 @@
-import { test,expect } from '../fixtures/AppFixtures';
-import { testsPorEntorno } from '../support/DecoradorTestPorEntorno';
+import { test,expect } from '@fixtures/AppFixtures';
+import { testsPorEntorno } from '@support/DecoradorTestPorEntorno';
 
 test.describe('navegacion principal', () => {
   test.beforeEach(async ({pagInicio}) => {

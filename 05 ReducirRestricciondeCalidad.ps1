@@ -1,30 +1,30 @@
-﻿Lo que ha pasado es que npm run quality está revisando tres mundos distintos como si todos fueran iguales:
-
-tests/**/*.ts              → código de pruebas Playwright
-api-local/**/*.ts          → TypeScript de API
-web-local/assets/**/*.js   → JavaScript heredado / web estática
-
-Y además lo está haciendo con:
-
-eslint . --max-warnings=0
-
-Eso significa:
-
-1 warning = fallo de CI
-1 error   = fallo de CI
-
-Para una primera iteración con alumnos, yo lo calibraría así:
-
-Tests Playwright  → estricto
-Config / API TS   → razonablemente estricto
-web-local JS      → modo legado, no bloquear al principio
-HTML / CSS        → validar, pero ajustar poco a poco
-
-ESLint desde v9 usa por defecto el formato eslint.config.js/mjs, y el plugin de Playwright recomienda reglas específicas para tests; además Playwright recomienda usar “web-first assertions” porque esperan automáticamente a que se cumpla la condición.
-
-1. Sustituye tu eslint.config.mjs
-
-En C:\LabGuiado07, reemplaza el contenido de eslint.config.mjs por este:
+﻿# Lo que ha pasado es que npm run quality está revisando tres mundos distintos como si todos fueran iguales:
+#
+# tests/**/*.ts              → código de pruebas Playwright
+# api-local/**/*.ts          → TypeScript de API
+# web-local/assets/**/*.js   → JavaScript heredado / web estática
+#
+# Y además lo está haciendo con:
+#
+# eslint . --max-warnings=0
+#
+# Eso significa:
+#
+# 1 warning = fallo de CI
+# 1 error   = fallo de CI
+#
+# Para una primera iteración con alumnos, yo lo calibraría así:
+#
+# Tests Playwright  → estricto
+# Config / API TS   → razonablemente estricto
+# web-local JS      → modo legado, no bloquear al principio
+# HTML / CSS        → validar, pero ajustar poco a poco
+#
+# ESLint desde v9 usa por defecto el formato eslint.config.js/mjs, y el plugin de Playwright recomienda reglas específicas para tests; además Playwright recomienda usar “web-first assertions” porque esperan automáticamente a que se cumpla la condición.
+#
+# 1. Sustituye tu eslint.config.mjs
+# 
+# En C:\LabGuiado07, reemplaza el contenido de eslint.config.mjs por este:
 
 @'
 import js from '@eslint/js';

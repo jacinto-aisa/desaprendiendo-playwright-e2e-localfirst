@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/AppFixtures';
+import { test, expect } from '@fixtures/AppFixtures';
 import { esLocalFirst } from './EntornoE2E';
 
 export class DecoradorTestsPorEntorno {
