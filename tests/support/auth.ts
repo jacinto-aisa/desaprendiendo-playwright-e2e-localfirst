@@ -1,0 +1,18 @@
+import { APIRequestContext, expect } from '@playwright/test';
+import { API_BASE_URL } from './env';
+
+export async function obtenerToken(request: APIRequestContext): Promise<string> {
+  const login = await request.post(`${API_BASE_URL}/auth/login`, {
+    data: {
+      email: process.env.E2E_USER ?? 'alumno@desaprendiendo.net',
+      password: process.env.E2E_PASS ?? 'Password123',
+    },
+  });
+
+  expect(login.ok()).toBeTruthy();
+
+  const body = await login.json();
+  expect(body.token).toBeTruthy();
+
+  return body.token;
+}

@@ -1,14 +1,28 @@
 {
   "compilerOptions": {
     "paths": {
-      "@pom/*": ["tests/pom/*"],
-      "@com/*": ["tests/com/*"],
-      "@fixtures/*": ["tests/fixtures/*"],
-      "@flows/*": ["tests/data/flows/*"],
-      "@api-client/*": ["tests/api-client/*"],
-      "@support/*": ["tests/support/*"],
-      "@factories/*": ["tests/factories/*"]
-    }
+      "@pom/*": [
+        "tests/pom/*"
+      ],
+      "@com/*": [
+        "tests/com/*"
+      ],
+      "@fixtures/*": [
+        "tests/fixtures/*"
+      ],
+      "@flows/*": [
+        "tests/data/flows/*"
+      ],
+      "@api-client/*": [
+        "tests/api-client/*"
+      ],
+      "@support/*": [
+        "tests/support/*"
+      ],
+      "@factories/*": [
+        "tests/factories/*"
+      ]
+    },
+    "baseUrl": "."
   }
 }
-
