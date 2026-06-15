@@ -24,7 +24,11 @@
     "quality:playwright": "npm run lint:playwright",
     "quality:strict": "npm run lint:strict && npm run validate:html && npm run lint:css",
     "lint:playwright": "eslint \"tests/**/*.ts\"",
-    "lint:playwright:strict": "eslint \"tests/**/*.ts\" --max-warnings=0"
+    "lint:playwright:strict": "eslint \"tests/**/*.ts\" --max-warnings=0",
+    "serve:api": "cross-env API_PORT=3001 node ./api-local/server.js",
+    "test:api:local": "cross-env E2E_TARGET=local API_BASE_URL=http://127.0.0.1:3001 API_PORT=3001 playwright test tests/api --project=chromium",
+    "test:hybrid:local": "cross-env E2E_TARGET=local API_BASE_URL=http://127.0.0.1:3001 API_PORT=3001 playwright test tests/hybrid --project=chromium",
+    "test:iteracion09": "cross-env E2E_TARGET=local API_BASE_URL=http://127.0.0.1:3001 API_PORT=3001 playwright test tests/api tests/hybrid --project=chromium"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,4 @@
-import { PagCursosGrafico } from "../../pom/PagCursosGrafico";
+import { PagCursosGrafico } from "@pom/PagCursosGrafico";
 import { EscenarioPedirInformacionCurso } from "./EscenarioPedirInformacionCurso";
 
 

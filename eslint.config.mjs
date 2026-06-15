@@ -29,6 +29,22 @@ export default [
     }
   },
 
+
+
+  {
+    files: ['api-local/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'commonjs',
+      globals: {
+        ...globals.node
+      }
+    },
+    rules: {
+      'no-console': 'off'
+    }
+  },
+
   {
     files: ['web-local/assets/js/**/*.js'],
     languageOptions: {

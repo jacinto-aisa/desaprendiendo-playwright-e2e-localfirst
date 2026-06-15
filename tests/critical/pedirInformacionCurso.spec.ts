@@ -1,6 +1,6 @@
 
-import { PedirInformacionCursoBuilder } from '../data/flows/PedirInformacionCursoBuilder';
-import { test, expect } from '../fixtures/AppFixtures';
+import { PedirInformacionCursoBuilder } from '@flows/PedirInformacionCursoBuilder';
+import { test, expect } from '@fixtures/AppFixtures';
 
 
 const escenario = PedirInformacionCursoBuilder

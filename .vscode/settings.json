@@ -4,5 +4,9 @@
     ],
     "cSpell.words": [
         "Inicio"
-    ]
+    ],
+    "sonarlint.connectedMode.project": {
+        "connectionId": "jacinto-aisa-github",
+        "projectKey": "jacinto-aisa_desaprendiendo-playwright-e2e-localfirst"
+    }
 }

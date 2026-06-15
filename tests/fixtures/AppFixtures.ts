@@ -1,18 +1,18 @@
 import { test as base } from '@playwright/test';
 
-import { HeaderComponent } from '../com/HeaderComponent';
-import { FabricaPaginas } from '../factories/FabricaPaginas';
+import { HeaderComponent } from '@com/HeaderComponent';
+import { FabricaPaginas } from '@factories/FabricaPaginas';
 
-import { PagInicio } from '../pom/PagInicio';
-import { PagClientes } from '../pom/PagClientes';
-import { PagCertificaciones } from '../pom/PagCertificaciones';
-import { PagCursosEtiquetas } from '../pom/PagCursosEtiquetas';
-import { PagCursosGrafico } from '../pom/PagCursosGrafico';
-import { PagExperiencia } from '../pom/PagExperiencia';
-import { PagJardin } from '../pom/PagJardin';
-import { PagMetodo } from '../pom/PagMetodo';
-import { PedirInformacionCursoFlow } from '../data/flows/PedirInformacionCursoFlow';
-import { ContactoDirectoComponent } from '../com/ContactoDirectoComponent';
+import { PagInicio } from '@pom/PagInicio';
+import { PagClientes } from '@pom/PagClientes';
+import { PagCertificaciones } from '@pom/PagCertificaciones';
+import { PagCursosEtiquetas } from '@pom/PagCursosEtiquetas';
+import { PagCursosGrafico } from '@pom/PagCursosGrafico';
+import { PagExperiencia } from '@pom/PagExperiencia';
+import { PagJardin } from '@pom/PagJardin';
+import { PagMetodo } from '@pom/PagMetodo';
+import { PedirInformacionCursoFlow } from '@flows/PedirInformacionCursoFlow';
+import { ContactoDirectoComponent } from '@com/ContactoDirectoComponent';
 
 type AppFixtures = {
   fabricaPaginas: FabricaPaginas;
