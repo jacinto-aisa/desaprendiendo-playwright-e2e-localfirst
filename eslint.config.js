@@ -124,7 +124,16 @@ module.exports = [
       ],
     },
   },
-
+  {
+    files: ["tests/scripts/**/*.{js,mjs,cjs}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
   {
     files: ['tests/**/*.ts'],
     plugins: {
