@@ -30,9 +30,15 @@
     "test:hybrid:local": "cross-env E2E_TARGET=local API_BASE_URL=http://127.0.0.1:3001 API_PORT=3001 playwright test tests/hybrid --project=chromium",
     "test:iteracion09": "cross-env E2E_TARGET=local API_BASE_URL=http://127.0.0.1:3001 API_PORT=3001 playwright test tests/api tests/hybrid --project=chromium",
     "dev": "vite --host 0.0.0.0",
-    "test:e2e:coverage": "cross-env E2E_COVERAGE=1 playwright test --project=chromium",
-    "coverage:e2e:report": "nyc report --temp-dir .nyc_output --report-dir coverage/e2e --reporter=html --reporter=lcov --reporter=text-summary",
-    "coverage:e2e": "npm run test:e2e:coverage && npm run coverage:e2e:report"
+    "test:e2e:coverage": "node ./tests/scripts/run-e2e-coverage.mjs",
+    "coverage:e2e:report": "node ./tests/scripts/report-e2e-coverage.mjs",
+    "coverage:e2e": "npm run test:e2e:coverage",
+    "clean:coverage": "node ./tests/scripts/clean-coverage.mjs",
+    "instrument:web-local": "node ./tests/scripts/instrument-web-local.mjs",
+    "serve:portfolio:coverage": "npm run instrument:web-local && http-server ./web-local-instrumented -p 4174 -c-1",
+    "serve:api:coverage": "npm run instrument:api-local && cross-env E2E_COVERAGE=1 API_PORT=3001 node ./api-local-instrumented/server.js",
+    "instrument:api-local": "node ./tests/scripts/instrument-api-local.mjs",
+    "coverage:e2e:playwright": "cross-env E2E_TARGET=local E2E_COVERAGE=1 API_BASE_URL=http://127.0.0.1:3001 API_PORT=3001 playwright test --config=tests/playwright.coverage.config.ts"
   },
   "keywords": [],
   "author": "",

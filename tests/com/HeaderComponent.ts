@@ -33,7 +33,7 @@ export class HeaderComponent {
     await expect(this.page).toHaveURL(/clientes\.html$/);
   }
   async irACertificaciones() {
-    await this.page.getByRole('link', { name: /certificaciones/i }).click();
+    await this.page.getByRole('link', { name: /certificaciones/i }).first().click();
     await expect(this.page).toHaveURL(/certificaciones\.html$/);
   }
 }

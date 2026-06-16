@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio · Jacinto Aisa Ibañez</title>
+  <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/home_buttons.css">
+</head>
+<body>
+  <div class="nav">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img alt="desaprendiendo" src="assets/img/logo_mark.png">
+      </a>
+      <nav class="pills" aria-label="Navegación principal">
+        <a class="pill active" href="index.html">Inicio</a>
+        <a class="pill" href="metodo_docente.html">Método</a>
+        <a class="pill" href="jardin.html">JARDIN</a>
+        <a class="pill" href="experiencia.html">Experiencia</a>
+        <a class="pill" href="cursos_etiquetas.html">Cursos etiquetas</a>
+        <a class="pill" href="cursos_graph.html">Cursos graph</a>
+        <a class="pill" href="clientes.html">Clientes</a>
+        <a class="pill" href="certificaciones.html">Certificaciones</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <div class="heroTop">
+        <div>
+          <div class="kicker">Inicio · desaprendiendo formación</div>
+          <h1 id="heroName">Jacinto Aisa Ibañez</h1>
+          <h2 style="margin: 0 0 10px; font-size: 22px; color: var(--primary);">Inicio</h2>
+          <p id="heroTitle" class="sub">Executive Trainer | Arquitectura Cloud (Azure) | .NET | Data/BI</p>
+          <p id="heroTagline" class="sub">Formación in-company de muy alto nivel para equipos técnicos y organizaciones.</p>
+
+          <nav class="buttonRow--hero" aria-label="Accesos principales">
+            <a class="btnHero" href="cursos_etiquetas.html">Ver cursos</a>
+            <a class="btnHero" href="metodo_docente.html">Método docente</a>
+            <a class="btnHero" href="certificaciones.html">Certificaciones</a>
+          </nav>
+        </div>
+
+        <aside class="heroCard profileBox">
+          <div>
+            <div class="avatar">
+              <img alt="Jacinto Aisa Ibañez" src="assets/img/foto_personal.png">
+            </div>
+            <a class="btn-cv--avatar" href="assets/docs/Jacinto_Aisa_Ibanez_CV.pdf">CV</a>
+          </div>
+          <div class="meta">
+            <b>Jacinto Aisa Ibañez</b>
+            <span>Executive Trainer | Arquitectura Cloud (Azure) | .NET | Data/BI</span>
+            <span><a href="mailto:jacinto@desaprendiendo.net" id="cEmail1">jacinto@desaprendiendo.net</a></span>
+            <span><a href="mailto:jacinto@desaprendiendo.net" id="cEmail2">jacinto@desaprendiendo.net</a></span>
+            <span id="cPhone">626506548</span>
+            <span id="cAddr"></span>
+            <span><a id="cLinkedIn" href="https://www.linkedin.com/in/jacintoaisa">LinkedIn</a></span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Indicadores principales">
+      <div class="card span-12">
+        <div class="sectionTitle">
+          <div>
+            <h2>Indicadores</h2>
+            <small>Resumen generado desde la copia local-first</small>
+          </div>
+        </div>
+        <div class="kpis" style="margin-top: 14px;">
+          <div class="kpi"><div class="n" id="kpiCourses">0</div><div class="l">Cursos</div></div>
+          <div class="kpi"><div class="n" id="kpiClients">0</div><div class="l">Clientes</div></div>
+          <div class="kpi"><div class="n" id="kpiCerts">0</div><div class="l">Certificaciones</div></div>
+          <div class="kpi"><div class="n" id="kpiHours">0</div><div class="l">Horas estimadas</div></div>
+          <div class="kpi"><div class="n" id="kpiTech">0</div><div class="l">Tecnologías</div></div>
+          <div class="kpi"><div class="n" id="kpiExpYears">0</div><div class="l">Años de experiencia</div></div>
+        </div>
+      </div>
+
+      <div class="card span-6">
+        <h2>Servicios</h2>
+        <div id="servicesList" class="grid" style="grid-template-columns: 1fr; gap: 12px;"></div>
+      </div>
+
+      <div class="card span-6">
+        <h2>Enfoque práctico</h2>
+        <div id="highlights"></div>
+        <p style="margin-top: 16px;">Local-first permite practicar Playwright, API, UI, CI y cobertura sin depender de producción.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      desaprendiendo.net · copia local-first para prácticas de Playwright
+    </footer>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="assets/js/base.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>

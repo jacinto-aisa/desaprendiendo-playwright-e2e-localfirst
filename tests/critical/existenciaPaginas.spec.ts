@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '@fixtures/CoverageFixtures';
 import { crearDecoradorTestsPorEntorno } from '@support/DecoradorTestPorEntorno';
 
 const testsPorEntorno = crearDecoradorTestsPorEntorno(test);

@@ -2,15 +2,26 @@
   "temp-dir": ".nyc_output",
   "report-dir": "coverage/e2e",
   "all": true,
-  "include": ["src/**/*.{js,jsx,ts,tsx}"],
+  "include": [
+    "web-local/**/*.js",
+    "api-local/**/*.js"
+  ],
   "exclude": [
     "tests/**",
     "e2e/**",
     "dist/**",
     "coverage/**",
     "playwright-report/**",
+    "test-results/**",
+    "blob-report/**",
+    "web-local-instrumented/**",
+    "api-local-instrumented/**",
     "node_modules/**"
   ],
-  "reporter": ["html", "lcov", "text-summary"],
+  "reporter": [
+    "html",
+    "lcov",
+    "text-summary"
+  ],
   "check-coverage": false
 }

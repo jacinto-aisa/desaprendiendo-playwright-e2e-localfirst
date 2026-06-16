@@ -455,6 +455,11 @@ async function handleRequest(req, res) {
   const pathname = url.pathname;
 
   try {
+    if (process.env.E2E_COVERAGE === '1' && pathname === '/__coverage__') {
+      sendJson(res, 200, globalThis.__coverage__ ?? {});
+      return;
+    }
+
     if (pathname === '/health') {
       sendJson(res, 200, { ok: true, service: 'api-local-labguiado08' });
       return;

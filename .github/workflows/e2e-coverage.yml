@@ -1,0 +1,58 @@
+name: E2E Coverage - Playwright + Istanbul
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  e2e-coverage:
+    name: E2E coverage local-first
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    env:
+      CI: true
+      E2E_TARGET: local
+      E2E_COVERAGE: '1'
+      API_BASE_URL: http://127.0.0.1:3001
+      API_PORT: '3001'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright coverage
+        run: npm run coverage:e2e
+
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-coverage
+          path: playwright-report/
+          retention-days: 30
+
+      - name: Upload E2E coverage report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-e2e
+          path: |
+            coverage/e2e/
+            .nyc_output/
+          retention-days: 30

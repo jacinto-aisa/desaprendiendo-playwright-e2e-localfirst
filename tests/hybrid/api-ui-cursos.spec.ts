@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '@fixtures/CoverageFixtures';
 import { API_BASE_URL } from '@support/env';
 import { crearDecoradorTestsPorEntorno } from '@support/DecoradorTestPorEntorno';
 

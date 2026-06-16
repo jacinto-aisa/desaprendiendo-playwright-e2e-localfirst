@@ -39,3 +39,8 @@ temp/
 
 # HAR temporales: se pueden versionar solo los HAR docentes revisados
 mocks/tmp/
+
+# Cobertura E2E generada
+.nyc_output/
+web-local-instrumented/
+api-local-instrumented/
