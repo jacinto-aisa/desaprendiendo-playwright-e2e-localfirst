@@ -1,7 +1,6 @@
-
 import { PedirInformacionCursoBuilder } from '@flows/PedirInformacionCursoBuilder';
 import { test, expect } from '@fixtures/AppFixtures';
-
+import { testsPorEntorno } from '@support/DecoradorTestPorEntorno';
 
 const escenario = PedirInformacionCursoBuilder
   .unEscenario()
@@ -10,11 +9,17 @@ const escenario = PedirInformacionCursoBuilder
   .conAccionFinal('solicitarPrimerCurso')
   .build();
 
-test('permite pedir información de un curso desde cursos graph', async ({
-  pedirInformacionCursoFlow,  page,
-}) => {
-  await pedirInformacionCursoFlow.pedirInformacionCurso(escenario);
+testsPorEntorno.describeSoloLocalFirst(
+  'flujo de pedir información de curso en cursos graph',
+  () => {
+    test('permite pedir información de un curso desde cursos graph', async ({
+      pedirInformacionCursoFlow,
+      page,
+    }) => {
+      await pedirInformacionCursoFlow.pedirInformacionCurso(escenario);
 
-  // Verificar que se está intentando mandar un correo con la información del curso solicitado
-  await expect(page).toHaveURL(/cursos_graph\.html$/);
-});
+      // Verificar que se está intentando mandar un correo con la información del curso solicitado.
+      await expect(page).toHaveURL(/cursos_graph\.html$/);
+    });
+  }
+);

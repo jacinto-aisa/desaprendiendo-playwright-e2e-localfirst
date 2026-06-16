@@ -1,8 +1,10 @@
 import { test, expect } from '@playwright/test';
 import { API_BASE_URL } from '@support/env';
+import { crearDecoradorTestsPorEntorno } from '@support/DecoradorTestPorEntorno';
 
+const testsPorEntorno = crearDecoradorTestsPorEntorno(test);
 
-test.describe('Iteración 09 · verbos HTTP contra API local', () => {
+testsPorEntorno.describeSoloLocalFirst('Iteración 09 · verbos HTTP contra API local', () => {
   test('GET lee cursos por tecnología', async ({ request }) => {
     const response = await request.get(`${API_BASE_URL}/api/cursos`, {
       params: { tecnologia: 'Azure' },

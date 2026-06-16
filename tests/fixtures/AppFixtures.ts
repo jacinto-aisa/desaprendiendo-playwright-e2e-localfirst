@@ -65,7 +65,7 @@ export const test = base.extend<AppFixtures>({
       try {
         const coverage = await page.evaluate(() => {
           return (
-            window as unknown as {
+            globalThis as unknown as {
               __coverage__?: unknown;
             }
           ).__coverage__ ?? null;
@@ -82,7 +82,7 @@ export const test = base.extend<AppFixtures>({
         });
 
         const nombreTest = crearNombreSeguro(
-          testInfo.titlePath().join(' ')
+          testInfo.titlePath.join(' ')
         );
 
         const nombreFichero = [

@@ -1,8 +1,13 @@
-import { test, expect } from '@fixtures/AppFixtures';
+import { test as appTest, expect } from '@fixtures/AppFixtures';
 import { esLocalFirst } from './EntornoE2E';
 
+type TestBaseConDescribeYSkip = {
+  describe: (nombre: string, registrarTests: () => void) => void;
+  skip: (condicion: boolean, descripcion: string) => void;
+};
+
 export class DecoradorTestsPorEntorno {
-  constructor(private readonly testBase = test) {}
+  constructor(private readonly testBase: TestBaseConDescribeYSkip = appTest) {}
 
   describeSoloLocalFirst(nombre: string, registrarTests: () => void) {
     this.testBase.describe(nombre, () => {
@@ -16,6 +21,12 @@ export class DecoradorTestsPorEntorno {
   }
 }
 
-export const testsPorEntorno = new DecoradorTestsPorEntorno();
+export function crearDecoradorTestsPorEntorno(
+  testBase: TestBaseConDescribeYSkip
+): DecoradorTestsPorEntorno {
+  return new DecoradorTestsPorEntorno(testBase);
+}
 
-export { test, expect };
+export const testsPorEntorno = new DecoradorTestsPorEntorno(appTest);
+
+export { appTest as test, expect };

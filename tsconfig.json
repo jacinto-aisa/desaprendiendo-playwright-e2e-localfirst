@@ -23,6 +23,7 @@
         "tests/factories/*"
       ]
     },
-    "baseUrl": "."
+    "baseUrl": ".",
+    "ignoreDeprecations": "6.0"
   }
 }

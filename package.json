@@ -28,7 +28,11 @@
     "serve:api": "cross-env API_PORT=3001 node ./api-local/server.js",
     "test:api:local": "cross-env E2E_TARGET=local API_BASE_URL=http://127.0.0.1:3001 API_PORT=3001 playwright test tests/api --project=chromium",
     "test:hybrid:local": "cross-env E2E_TARGET=local API_BASE_URL=http://127.0.0.1:3001 API_PORT=3001 playwright test tests/hybrid --project=chromium",
-    "test:iteracion09": "cross-env E2E_TARGET=local API_BASE_URL=http://127.0.0.1:3001 API_PORT=3001 playwright test tests/api tests/hybrid --project=chromium"
+    "test:iteracion09": "cross-env E2E_TARGET=local API_BASE_URL=http://127.0.0.1:3001 API_PORT=3001 playwright test tests/api tests/hybrid --project=chromium",
+    "dev": "vite --host 0.0.0.0",
+    "test:e2e:coverage": "cross-env E2E_COVERAGE=1 playwright test --project=chromium",
+    "coverage:e2e:report": "nyc report --temp-dir .nyc_output --report-dir coverage/e2e --reporter=html --reporter=lcov --reporter=text-summary",
+    "coverage:e2e": "npm run test:e2e:coverage && npm run coverage:e2e:report"
   },
   "keywords": [],
   "author": "",
