@@ -1,0 +1,34 @@
+﻿using System.Threading.Tasks;
+using PlaywrightDotnet.Tests.Pom;
+using PlaywrightDotnet.Tests.Data.Flows;
+
+namespace PlaywrightDotnet.Tests.Flows
+{
+    public class PedirInformacionCursoFlow
+    {
+        private readonly PagCursosGrafico pagCursosGrafico;
+
+        public PedirInformacionCursoFlow(PagCursosGrafico pagCursosGrafico)
+        {
+            this.pagCursosGrafico = pagCursosGrafico;
+        }
+
+        public async Task PedirInformacionCursoAsync(EscenarioPedirInformacionCurso escenario)
+        {
+            await pagCursosGrafico.AbrirYComprobarAsync();
+            await pagCursosGrafico.DeberiaMostrarGruposDeCursosAsync();
+
+            foreach (var numeroBurbuja in escenario.Burbujas)
+            {
+                await pagCursosGrafico.SeleccionarBurbujaPorNumeroAsync(numeroBurbuja);
+            }
+
+            await pagCursosGrafico.DesplegarGrupoPorNumeroAsync(escenario.Grupo);
+
+            if (escenario.AccionFinal == "solicitarPrimerCurso")
+            {
+                await pagCursosGrafico.SolicitarPrimerCursoDelGrupoAsync(escenario.Grupo);
+            }
+        }
+    }
+}

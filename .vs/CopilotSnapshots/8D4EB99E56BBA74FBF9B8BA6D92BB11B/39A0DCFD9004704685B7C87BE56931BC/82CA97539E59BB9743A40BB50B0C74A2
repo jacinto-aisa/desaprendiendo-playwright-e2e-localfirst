@@ -1,0 +1,103 @@
+﻿// print_courses.js — Local-first
+// Renderiza TODOS los cursos (sin filtros) agrupados por Tag y listo para imprimir.
+(function(){
+  const D = window.SITE_DATA || {};
+  const courses = Array.isArray(D.courses) ? D.courses : [];
+
+  const $ = (s, el=document)=>el.querySelector(s);
+  function esc(s){
+    return String(s ?? '').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+  }
+  function num(v){
+    if(v===null||v===undefined) return 0;
+    const n=parseFloat(String(v).trim().replace(',','.'));
+    return isFinite(n)?n:0;
+  }
+  function norm(s){
+    s=String(s||'').trim().toLowerCase();
+    try{ s=s.normalize('NFD').replace(/[\u0300-\u036f]/g,''); }catch(_e){}
+    return s.replace(/\s+/g,' ');
+  }
+
+  const tagMap = new Map();
+
+  function uniq(arr){
+    const out=[]; const seen=new Set();
+    for(const v of arr){
+      const s=String(v||'').trim();
+      if(!s) continue;
+      const k=norm(s);
+      if(seen.has(k)) continue;
+      seen.add(k);
+      out.push(s);
+    }
+    return out;
+  }
+
+  function getTags(c){
+    const raw = Array.isArray(c.tags) ? c.tags : [];
+    const legacy = c.type ? [String(c.type)] : [];
+    const tags = uniq([...raw, ...legacy]);
+    for(const t of tags){
+      const k = norm(t);
+      if(!tagMap.has(k)) tagMap.set(k, t);
+    }
+    return tags;
+  }
+
+  const map = new Map();
+  for(const c of courses){
+    for(const t of getTags(c)){
+      const k = norm(t);
+      if(!k) continue;
+      if(!map.has(k)) map.set(k, []);
+      map.get(k).push(c);
+    }
+  }
+
+  const keys = Array.from(map.keys()).sort((a,b)=>(tagMap.get(a)||a).localeCompare((tagMap.get(b)||b),'es',{sensitivity:'base'}));
+
+  function render(){
+    const root = $('#printRoot');
+    if(!root) return;
+
+    const totalEd = courses.length;
+    const totalHours = courses.reduce((acc,c)=>acc+num(c.hours_per_edition||0),0);
+
+    let html = `<h1>Cursos impartidos — listado imprimible</h1>
+      <div class="printFooter">Ediciones: ${totalEd} · Horas totales: ${Math.round(totalHours)}h</div>
+    `;
+
+    for(const k of keys){
+      const title = tagMap.get(k) || k;
+      const items = map.get(k).slice().sort((a,b)=>{
+        const ay=parseInt(a.year,10)||0, by=parseInt(b.year,10)||0;
+        if(by!==ay) return by-ay;
+        return String(a.title||'').localeCompare(String(b.title||''),'es',{sensitivity:'base'});
+      });
+
+      html += `<h2>${esc(title)}</h2>
+        <table class="printTable">
+          <thead><tr><th>Año</th><th>Curso</th><th>Horas</th><th>Cliente</th></tr></thead>
+          <tbody>
+            ${items.map(c=>`
+              <tr>
+                <td>${esc(c.year||'')}</td>
+                <td>${esc(c.title||'')}</td>
+                <td>${esc(num(c.hours_per_edition||0) ? (num(c.hours_per_edition||0)+'h') : '')}</td>
+                <td>${esc(c.client||'')}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>`;
+    }
+
+    root.innerHTML = html;
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    render();
+    const btn = document.getElementById('doPrint');
+    if(btn) btn.addEventListener('click', ()=>window.print());
+  });
+})();

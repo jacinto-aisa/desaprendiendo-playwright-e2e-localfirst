@@ -1,0 +1,1003 @@
+﻿function cov_13lhxv1xcc() {
+  var path = "web-local/assets/js/cursos_view_toggle.js";
+  var hash = "4d19b8653eda52114cb233ffebca1f842b2994f0";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "web-local/assets/js/cursos_view_toggle.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 9,
+          column: 0
+        },
+        end: {
+          line: 68,
+          column: 5
+        }
+      },
+      "1": {
+        start: {
+          line: 10,
+          column: 21
+        },
+        end: {
+          line: 10,
+          column: 62
+        }
+      },
+      "2": {
+        start: {
+          line: 11,
+          column: 19
+        },
+        end: {
+          line: 11,
+          column: 58
+        }
+      },
+      "3": {
+        start: {
+          line: 12,
+          column: 2
+        },
+        end: {
+          line: 12,
+          column: 38
+        }
+      },
+      "4": {
+        start: {
+          line: 12,
+          column: 31
+        },
+        end: {
+          line: 12,
+          column: 38
+        }
+      },
+      "5": {
+        start: {
+          line: 14,
+          column: 15
+        },
+        end: {
+          line: 14,
+          column: 71
+        }
+      },
+      "6": {
+        start: {
+          line: 15,
+          column: 18
+        },
+        end: {
+          line: 15,
+          column: 47
+        }
+      },
+      "7": {
+        start: {
+          line: 19,
+          column: 4
+        },
+        end: {
+          line: 19,
+          column: 49
+        }
+      },
+      "8": {
+        start: {
+          line: 20,
+          column: 4
+        },
+        end: {
+          line: 20,
+          column: 60
+        }
+      },
+      "9": {
+        start: {
+          line: 21,
+          column: 4
+        },
+        end: {
+          line: 21,
+          column: 46
+        }
+      },
+      "10": {
+        start: {
+          line: 22,
+          column: 4
+        },
+        end: {
+          line: 22,
+          column: 57
+        }
+      },
+      "11": {
+        start: {
+          line: 24,
+          column: 2
+        },
+        end: {
+          line: 24,
+          column: 20
+        }
+      },
+      "12": {
+        start: {
+          line: 28,
+          column: 13
+        },
+        end: {
+          line: 28,
+          column: 52
+        }
+      },
+      "13": {
+        start: {
+          line: 29,
+          column: 4
+        },
+        end: {
+          line: 29,
+          column: 21
+        }
+      },
+      "14": {
+        start: {
+          line: 29,
+          column: 11
+        },
+        end: {
+          line: 29,
+          column: 21
+        }
+      },
+      "15": {
+        start: {
+          line: 30,
+          column: 4
+        },
+        end: {
+          line: 30,
+          column: 39
+        }
+      },
+      "16": {
+        start: {
+          line: 31,
+          column: 4
+        },
+        end: {
+          line: 31,
+          column: 34
+        }
+      },
+      "17": {
+        start: {
+          line: 32,
+          column: 4
+        },
+        end: {
+          line: 32,
+          column: 108
+        }
+      },
+      "18": {
+        start: {
+          line: 33,
+          column: 4
+        },
+        end: {
+          line: 33,
+          column: 34
+        }
+      },
+      "19": {
+        start: {
+          line: 34,
+          column: 4
+        },
+        end: {
+          line: 34,
+          column: 14
+        }
+      },
+      "20": {
+        start: {
+          line: 38,
+          column: 15
+        },
+        end: {
+          line: 38,
+          column: 25
+        }
+      },
+      "21": {
+        start: {
+          line: 40,
+          column: 17
+        },
+        end: {
+          line: 40,
+          column: 42
+        }
+      },
+      "22": {
+        start: {
+          line: 41,
+          column: 4
+        },
+        end: {
+          line: 46,
+          column: 5
+        }
+      },
+      "23": {
+        start: {
+          line: 42,
+          column: 6
+        },
+        end: {
+          line: 42,
+          column: 36
+        }
+      },
+      "24": {
+        start: {
+          line: 44,
+          column: 6
+        },
+        end: {
+          line: 44,
+          column: 28
+        }
+      },
+      "25": {
+        start: {
+          line: 45,
+          column: 6
+        },
+        end: {
+          line: 45,
+          column: 32
+        }
+      },
+      "26": {
+        start: {
+          line: 48,
+          column: 4
+        },
+        end: {
+          line: 48,
+          column: 30
+        }
+      },
+      "27": {
+        start: {
+          line: 51,
+          column: 4
+        },
+        end: {
+          line: 54,
+          column: 12
+        }
+      },
+      "28": {
+        start: {
+          line: 53,
+          column: 6
+        },
+        end: {
+          line: 53,
+          column: 33
+        }
+      },
+      "29": {
+        start: {
+          line: 57,
+          column: 2
+        },
+        end: {
+          line: 61,
+          column: 5
+        }
+      },
+      "30": {
+        start: {
+          line: 58,
+          column: 4
+        },
+        end: {
+          line: 58,
+          column: 24
+        }
+      },
+      "31": {
+        start: {
+          line: 58,
+          column: 17
+        },
+        end: {
+          line: 58,
+          column: 24
+        }
+      },
+      "32": {
+        start: {
+          line: 59,
+          column: 4
+        },
+        end: {
+          line: 59,
+          column: 20
+        }
+      },
+      "33": {
+        start: {
+          line: 60,
+          column: 4
+        },
+        end: {
+          line: 60,
+          column: 32
+        }
+      },
+      "34": {
+        start: {
+          line: 63,
+          column: 2
+        },
+        end: {
+          line: 67,
+          column: 5
+        }
+      },
+      "35": {
+        start: {
+          line: 64,
+          column: 4
+        },
+        end: {
+          line: 64,
+          column: 23
+        }
+      },
+      "36": {
+        start: {
+          line: 64,
+          column: 16
+        },
+        end: {
+          line: 64,
+          column: 23
+        }
+      },
+      "37": {
+        start: {
+          line: 65,
+          column: 4
+        },
+        end: {
+          line: 65,
+          column: 19
+        }
+      },
+      "38": {
+        start: {
+          line: 66,
+          column: 4
+        },
+        end: {
+          line: 66,
+          column: 28
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 9,
+            column: 1
+          },
+          end: {
+            line: 9,
+            column: 2
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 11
+          },
+          end: {
+            line: 68,
+            column: 1
+          }
+        },
+        line: 9
+      },
+      "1": {
+        name: "setState",
+        decl: {
+          start: {
+            line: 18,
+            column: 11
+          },
+          end: {
+            line: 18,
+            column: 19
+          }
+        },
+        loc: {
+          start: {
+            line: 18,
+            column: 26
+          },
+          end: {
+            line: 23,
+            column: 3
+          }
+        },
+        line: 18
+      },
+      "2": {
+        name: "ensureFx",
+        decl: {
+          start: {
+            line: 27,
+            column: 11
+          },
+          end: {
+            line: 27,
+            column: 19
+          }
+        },
+        loc: {
+          start: {
+            line: 27,
+            column: 21
+          },
+          end: {
+            line: 35,
+            column: 3
+          }
+        },
+        line: 27
+      },
+      "3": {
+        name: "go",
+        decl: {
+          start: {
+            line: 37,
+            column: 11
+          },
+          end: {
+            line: 37,
+            column: 13
+          }
+        },
+        loc: {
+          start: {
+            line: 37,
+            column: 18
+          },
+          end: {
+            line: 55,
+            column: 3
+          }
+        },
+        line: 37
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 51,
+            column: 15
+          },
+          end: {
+            line: 51,
+            column: 16
+          }
+        },
+        loc: {
+          start: {
+            line: 51,
+            column: 19
+          },
+          end: {
+            line: 54,
+            column: 5
+          }
+        },
+        line: 51
+      },
+      "5": {
+        name: "(anonymous_5)",
+        decl: {
+          start: {
+            line: 57,
+            column: 39
+          },
+          end: {
+            line: 57,
+            column: 40
+          }
+        },
+        loc: {
+          start: {
+            line: 57,
+            column: 43
+          },
+          end: {
+            line: 61,
+            column: 3
+          }
+        },
+        line: 57
+      },
+      "6": {
+        name: "(anonymous_6)",
+        decl: {
+          start: {
+            line: 63,
+            column: 37
+          },
+          end: {
+            line: 63,
+            column: 38
+          }
+        },
+        loc: {
+          start: {
+            line: 63,
+            column: 41
+          },
+          end: {
+            line: 67,
+            column: 3
+          }
+        },
+        line: 63
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 12,
+            column: 2
+          },
+          end: {
+            line: 12,
+            column: 38
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 12,
+            column: 2
+          },
+          end: {
+            line: 12,
+            column: 38
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 12
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 12,
+            column: 5
+          },
+          end: {
+            line: 12,
+            column: 29
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 12,
+            column: 5
+          },
+          end: {
+            line: 12,
+            column: 16
+          }
+        }, {
+          start: {
+            line: 12,
+            column: 20
+          },
+          end: {
+            line: 12,
+            column: 29
+          }
+        }],
+        line: 12
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 14,
+            column: 16
+          },
+          end: {
+            line: 14,
+            column: 56
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 14,
+            column: 16
+          },
+          end: {
+            line: 14,
+            column: 50
+          }
+        }, {
+          start: {
+            line: 14,
+            column: 54
+          },
+          end: {
+            line: 14,
+            column: 56
+          }
+        }],
+        line: 14
+      },
+      "3": {
+        loc: {
+          start: {
+            line: 29,
+            column: 4
+          },
+          end: {
+            line: 29,
+            column: 21
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 29,
+            column: 4
+          },
+          end: {
+            line: 29,
+            column: 21
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 29
+      },
+      "4": {
+        loc: {
+          start: {
+            line: 41,
+            column: 4
+          },
+          end: {
+            line: 46,
+            column: 5
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 41,
+            column: 4
+          },
+          end: {
+            line: 46,
+            column: 5
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 41
+      },
+      "5": {
+        loc: {
+          start: {
+            line: 58,
+            column: 4
+          },
+          end: {
+            line: 58,
+            column: 24
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 58,
+            column: 4
+          },
+          end: {
+            line: 58,
+            column: 24
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 58
+      },
+      "6": {
+        loc: {
+          start: {
+            line: 64,
+            column: 4
+          },
+          end: {
+            line: 64,
+            column: 23
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 64,
+            column: 4
+          },
+          end: {
+            line: 64,
+            column: 23
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 64
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 0,
+      "18": 0,
+      "19": 0,
+      "20": 0,
+      "21": 0,
+      "22": 0,
+      "23": 0,
+      "24": 0,
+      "25": 0,
+      "26": 0,
+      "27": 0,
+      "28": 0,
+      "29": 0,
+      "30": 0,
+      "31": 0,
+      "32": 0,
+      "33": 0,
+      "34": 0,
+      "35": 0,
+      "36": 0,
+      "37": 0,
+      "38": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0],
+      "2": [0, 0],
+      "3": [0, 0],
+      "4": [0, 0],
+      "5": [0, 0],
+      "6": [0, 0]
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "4d19b8653eda52114cb233ffebca1f842b2994f0"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_13lhxv1xcc = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_13lhxv1xcc();
+cov_13lhxv1xcc().s[0]++;
+// cursos_view_toggle.js
+// Toggle de modo de selección entre:
+// - cursos_etiquetas.html (Botones / nube)
+// - cursos_graph.html (Gráfica / burbujas)
+//
+// Requisito: cada cambio resetea el filtrado -> navegación limpia a la otra página.
+// Extra: transición visual (overlay) para dar un toque premium.
+
+(function () {
+  cov_13lhxv1xcc().f[0]++;
+  const btnButtons = (cov_13lhxv1xcc().s[1]++, document.getElementById('viewBtnButtons'));
+  const btnGraph = (cov_13lhxv1xcc().s[2]++, document.getElementById('viewBtnGraph'));
+  cov_13lhxv1xcc().s[3]++;
+  if ((cov_13lhxv1xcc().b[1][0]++, !btnButtons) || (cov_13lhxv1xcc().b[1][1]++, !btnGraph)) {
+    cov_13lhxv1xcc().b[0][0]++;
+    cov_13lhxv1xcc().s[4]++;
+    return;
+  } else {
+    cov_13lhxv1xcc().b[0][1]++;
+  }
+  const here = (cov_13lhxv1xcc().s[5]++, ((cov_13lhxv1xcc().b[2][0]++, location.pathname.split('/').pop()) || (cov_13lhxv1xcc().b[2][1]++, '')).toLowerCase());
+  const isGraph = (cov_13lhxv1xcc().s[6]++, here.includes('cursos_graph'));
+
+  // Sincroniza estado visual (por si el HTML se reutiliza)
+  function setState(graph) {
+    cov_13lhxv1xcc().f[1]++;
+    cov_13lhxv1xcc().s[7]++;
+    btnButtons.classList.toggle('is-on', !graph);
+    cov_13lhxv1xcc().s[8]++;
+    btnButtons.setAttribute('aria-pressed', String(!graph));
+    cov_13lhxv1xcc().s[9]++;
+    btnGraph.classList.toggle('is-on', graph);
+    cov_13lhxv1xcc().s[10]++;
+    btnGraph.setAttribute('aria-pressed', String(graph));
+  }
+  cov_13lhxv1xcc().s[11]++;
+  setState(isGraph);
+
+  // Overlay FX
+  function ensureFx() {
+    cov_13lhxv1xcc().f[2]++;
+    let fx = (cov_13lhxv1xcc().s[12]++, document.querySelector('.viewSwitchFx'));
+    cov_13lhxv1xcc().s[13]++;
+    if (fx) {
+      cov_13lhxv1xcc().b[3][0]++;
+      cov_13lhxv1xcc().s[14]++;
+      return fx;
+    } else {
+      cov_13lhxv1xcc().b[3][1]++;
+    }
+    cov_13lhxv1xcc().s[15]++;
+    fx = document.createElement('div');
+    cov_13lhxv1xcc().s[16]++;
+    fx.className = 'viewSwitchFx';
+    cov_13lhxv1xcc().s[17]++;
+    fx.innerHTML = '<div class="veil" aria-hidden="true"></div><div class="scan" aria-hidden="true"></div>';
+    cov_13lhxv1xcc().s[18]++;
+    document.body.appendChild(fx);
+    cov_13lhxv1xcc().s[19]++;
+    return fx;
+  }
+  function go(url) {
+    cov_13lhxv1xcc().f[3]++;
+    const fx = (cov_13lhxv1xcc().s[20]++, ensureFx());
+    // Reinicia la animación scan cada vez
+    const scan = (cov_13lhxv1xcc().s[21]++, fx.querySelector('.scan'));
+    cov_13lhxv1xcc().s[22]++;
+    if (scan) {
+      cov_13lhxv1xcc().b[4][0]++;
+      cov_13lhxv1xcc().s[23]++;
+      scan.style.animation = 'none';
+      // force reflow
+      cov_13lhxv1xcc().s[24]++;
+      void scan.offsetWidth;
+      cov_13lhxv1xcc().s[25]++;
+      scan.style.animation = '';
+    } else {
+      cov_13lhxv1xcc().b[4][1]++;
+    }
+    cov_13lhxv1xcc().s[26]++;
+    fx.classList.add('is-on');
+
+    // Pequeña pausa para que se vea el “wipe” antes de cambiar
+    cov_13lhxv1xcc().s[27]++;
+    setTimeout(() => {
+      cov_13lhxv1xcc().f[4]++;
+      cov_13lhxv1xcc().s[28]++;
+      // Navegación limpia => reset automático
+      window.location.href = url;
+    }, 220);
+  }
+  cov_13lhxv1xcc().s[29]++;
+  btnButtons.addEventListener('click', () => {
+    cov_13lhxv1xcc().f[5]++;
+    cov_13lhxv1xcc().s[30]++;
+    if (!isGraph) {
+      cov_13lhxv1xcc().b[5][0]++;
+      cov_13lhxv1xcc().s[31]++;
+      return;
+    } else {
+      cov_13lhxv1xcc().b[5][1]++;
+    } // ya estamos en botones
+    cov_13lhxv1xcc().s[32]++;
+    setState(false);
+    cov_13lhxv1xcc().s[33]++;
+    go('cursos_etiquetas.html');
+  });
+  cov_13lhxv1xcc().s[34]++;
+  btnGraph.addEventListener('click', () => {
+    cov_13lhxv1xcc().f[6]++;
+    cov_13lhxv1xcc().s[35]++;
+    if (isGraph) {
+      cov_13lhxv1xcc().b[6][0]++;
+      cov_13lhxv1xcc().s[36]++;
+      return;
+    } else {
+      cov_13lhxv1xcc().b[6][1]++;
+    } // ya estamos en gráfico
+    cov_13lhxv1xcc().s[37]++;
+    setState(true);
+    cov_13lhxv1xcc().s[38]++;
+    go('cursos_graph.html');
+  });
+})();

@@ -1,0 +1,9 @@
+﻿using Microsoft.Playwright;
+
+namespace PlaywrightDotnet.Tests.Pom
+{
+    public class PagCursosEtiquetas : PaginaBase
+    {
+        public PagCursosEtiquetas(IPage page) : base(page, "/cursos_etiquetas.html", "Cursos") { }
+    }
+}

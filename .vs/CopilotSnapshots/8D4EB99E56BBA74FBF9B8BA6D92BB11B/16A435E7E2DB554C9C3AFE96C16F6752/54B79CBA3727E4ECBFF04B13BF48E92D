@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <GenerateProgramFile>false</GenerateProgramFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Playwright" Version="1.43.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
+  </ItemGroup>
+
+  <!-- Automatic installation of Playwright browsers before build -->
+  <Target Name="EnsurePlaywrightBrowsersInstalled" BeforeTargets="Build">
+    <!-- Use local tool manifest: restore tools and run playwright install via the tool runner -->
+    <Exec Command="dotnet tool restore" />
+    <Exec Command="dotnet tool run playwright install" />
+  </Target>
+
+</Project>

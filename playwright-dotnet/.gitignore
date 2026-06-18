@@ -1,0 +1,15 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.dotCover
+*.ncrunch* 
+playwright-report/
+coverage/
+.nyc_output/
+web-local-instrumented/assets/js/*.map
+
+# GitHub Pages
+.github/
+

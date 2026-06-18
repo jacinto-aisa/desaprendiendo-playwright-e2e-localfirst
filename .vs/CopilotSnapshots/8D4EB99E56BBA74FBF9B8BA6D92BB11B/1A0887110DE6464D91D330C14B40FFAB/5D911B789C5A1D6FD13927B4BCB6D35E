@@ -1,0 +1,22 @@
+﻿param(
+  [string]$repoName = "desaprendiendo-playwright-dotnet",
+  [string]$visibility = "public"
+)
+
+# Requiere gh CLI autenticada y git configurado
+if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+  Write-Error "gh CLI no encontrada. Instala y autentica: https://cli.github.com/"
+  exit 1
+}
+
+# Inicializar repo si no existe
+if (-not (Test-Path ".git")) {
+  git init
+  git add .
+  git commit -m "Port Playwright tests to Playwright for .NET"
+}
+
+# Crear repo en GitHub y empujar
+gh repo create $repoName --$visibility --source . --remote origin --push
+
+Write-Host "Repositorio creado y cambios empujados a origin/main" -ForegroundColor Green

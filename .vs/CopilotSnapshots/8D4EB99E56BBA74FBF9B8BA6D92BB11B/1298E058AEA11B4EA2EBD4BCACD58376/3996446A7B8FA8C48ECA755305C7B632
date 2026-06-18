@@ -1,0 +1,56 @@
+﻿// scripts/instrument-web-local.mjs
+import fs from 'node:fs';
+import path from 'node:path';
+import { createInstrumenter } from 'istanbul-lib-instrument';
+
+const sourceRoot = path.resolve('web-local');
+const outputRoot = path.resolve('web-local-instrumented');
+
+const instrumenter = createInstrumenter({
+  coverageVariable: '__coverage__',
+  compact: false,
+  esModules: true,
+});
+
+function ensureDir(dir) {
+  fs.mkdirSync(dir, { recursive: true });
+}
+
+function shouldInstrument(filePath) {
+  return filePath.endsWith('.js')
+    && !filePath.includes(`${path.sep}vendor${path.sep}`)
+    && !filePath.includes(`${path.sep}coverage${path.sep}`);
+}
+
+function copyAndInstrument(source, target) {
+  const stat = fs.statSync(source);
+
+  if (stat.isDirectory()) {
+    ensureDir(target);
+    for (const entry of fs.readdirSync(source)) {
+      copyAndInstrument(path.join(source, entry), path.join(target, entry));
+    }
+    return;
+  }
+
+  ensureDir(path.dirname(target));
+
+  if (!shouldInstrument(source)) {
+    fs.copyFileSync(source, target);
+    return;
+  }
+
+  const code = fs.readFileSync(source, 'utf8');
+  const relativeName = path.relative(process.cwd(), source).replaceAll('\\', '/');
+  const instrumented = instrumenter.instrumentSync(code, relativeName);
+  fs.writeFileSync(target, instrumented, 'utf8');
+}
+
+if (!fs.existsSync(sourceRoot)) {
+  throw new Error(`No existe la carpeta ${sourceRoot}`);
+}
+
+fs.rmSync(outputRoot, { recursive: true, force: true });
+copyAndInstrument(sourceRoot, outputRoot);
+
+console.log(`Web instrumentada en: ${outputRoot}`);

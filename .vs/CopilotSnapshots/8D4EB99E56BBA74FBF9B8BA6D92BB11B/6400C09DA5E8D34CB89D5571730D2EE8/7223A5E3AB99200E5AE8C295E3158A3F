@@ -1,0 +1,57 @@
+﻿@page
+@model IndexModel
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio · Jacinto Aisa Ibañez</title>
+  <link rel="stylesheet" href="/assets/css/index.css">
+  <link rel="stylesheet" href="/assets/css/home.css">
+  <link rel="stylesheet" href="/assets/css/home_buttons.css">
+</head>
+<body>
+  <div class="nav">
+    <div class="container">
+      <a class="brand" href="/">
+        <img alt="desaprendiendo" src="/assets/img/logo_mark.png">
+      </a>
+      <nav class="pills" aria-label="Navegación principal">
+        <a class="pill active" href="/">Inicio</a>
+        <a class="pill" href="/metodo_docente.html">Método</a>
+        <a class="pill" href="/jardin.html">JARDIN</a>
+        <a class="pill" href="/experiencia.html">Experiencia</a>
+        <a class="pill" href="/cursos_etiquetas">Cursos etiquetas</a>
+        <a class="pill" href="/cursos_graph">Cursos graph</a>
+        <a class="pill" href="/clientes.html">Clientes</a>
+        <a class="pill" href="/certificaciones.html">Certificaciones</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <div class="heroTop">
+        <div>
+          <div class="kicker">Inicio · desaprendiendo formación</div>
+          <h1 id="heroName">Jacinto Aisa Ibañez</h1>
+          <h2 style="margin: 0 0 10px; font-size: 22px; color: var(--primary);">Inicio</h2>
+          <p id="heroTitle" class="sub">Executive Trainer | Arquitectura Cloud (Azure) | .NET | Data/BI</p>
+          <p id="heroTagline" class="sub">Formación in-company de muy alto nivel para equipos técnicos y organizaciones.</p>
+
+          <nav class="buttonRow--hero" aria-label="Accesos principales">
+
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Render SITE_DATA server-side so client JS can use window.SITE_DATA immediately
+    @Html.Raw(Model.SiteDataScript)
+  </script>
+  <script src="/assets/js/base.js"></script>
+  <script src="/assets/js/index.js"></script>
+</body>
+</html>

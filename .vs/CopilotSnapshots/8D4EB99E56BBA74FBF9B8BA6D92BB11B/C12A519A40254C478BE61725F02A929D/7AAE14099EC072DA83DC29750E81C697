@@ -1,0 +1,347 @@
+﻿(function(){
+  const D = window.SITE_DATA || {};
+  const $ = (s,el=document)=>el.querySelector(s);
+  const $$ = (s,el=document)=>Array.from(el.querySelectorAll(s));
+
+  function setActiveNav(){
+    const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    $$('.pill').forEach(p=>{
+      const href=(p.getAttribute('href')||'').toLowerCase();
+      if(href===path) p.classList.add('active');
+    });
+  }
+
+  function renderHero(){
+    const el = $('#heroName');
+    if(!el) return;
+
+    const setText = (id, value) => {
+      const node = $(id);
+      if(node) node.textContent = value || '';
+    };
+
+    setText('#heroName', D.person?.name || '—');
+    setText('#heroTitle', D.person?.title || '');
+    setText('#heroTagline', D.person?.tagline || '');
+    setText('#cPhone', D.person?.phone || '');
+    setText('#cAddr', D.person?.address || '');
+
+    const lp = $('#cLinkedIn');
+    if(lp) lp.href = D.person?.linkedin || '#';
+    const e1 = $('#cEmail1');
+    if(e1){ e1.textContent=D.person?.email_primary||''; e1.href='mailto:'+ (D.person?.email_primary||''); }
+    const e2 = $('#cEmail2');
+    if(e2){ e2.textContent=D.person?.email_secondary||''; e2.href='mailto:'+ (D.person?.email_secondary||''); }
+  }
+
+  function kpis(){
+    const courses = D.courses || [];
+    const years = new Set(courses.map(c=>c.year));
+    const tags = new Set();
+    for(const c of courses){
+      const raw = Array.isArray(c.tags) ? c.tags : (c.type ? [c.type] : []);
+      for(const t of raw){
+        const s = String(t||'').trim();
+        if(s) tags.add(s);
+      }
+    }
+    const clients = new Set(courses.map(c=>c.client).filter(Boolean));
+
+    const set = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = String(value);
+    };
+
+    set('kpiCourses', courses.length);
+    set('kpiYears', years.size);
+    set('kpiTypes', tags.size);
+    set('kpiClients', clients.size);
+
+    const certs = D.certifications || [];
+    set('kpiCerts', certs.length);
+  }
+
+  function renderServices(){
+    const host=$('#servicesList');
+    if(!host) return;
+    host.innerHTML = (D.services||[]).map(s=>`
+      <div class="kpi">
+        <div class="n" style="font-size:16px">${escapeHtml(s.title)}</div>
+        <div class="l">${escapeHtml(s.desc||'')}</div>
+      </div>
+    `).join('');
+  }
+
+  function renderHighlights(){
+    const host=$('#highlights');
+    if(!host) return;
+    host.innerHTML = (D.highlights||[]).map(h=>`<div class="badge"><strong>•</strong> <span>${escapeHtml(h)}</span></div>`).join(' ');
+  }
+
+  function renderExperience(){
+    const host=$('#experienceList');
+    if(!host) return;
+    host.innerHTML = (D.experience||[]).map(e=>`
+      <div class="card span-12">
+        <div class="sectionTitle">
+          <div>
+            <h2 style="margin:0">${escapeHtml(e.role)} · <span style="color:var(--primary)">${escapeHtml(e.company)}</span></h2>
+            <small>${escapeHtml(e.dates)}</small>
+          </div>
+        </div>
+        <p style="margin-top:10px">${escapeHtml(e.summary||'')}</p>
+      </div>
+    `).join('');
+  }
+
+  function renderClients(){
+    const host=$('#clientsGrid');
+    if(!host) return;
+
+    const excerpt = (s, max=220) => {
+      s = String(s||'').trim();
+      if(!s) return '';
+      // collapse whitespace for nicer cards
+      s = s.replace(/\s+/g,' ');
+      return s.length > max ? (s.slice(0, max-1) + '…') : s;
+    };
+
+    host.innerHTML = (D.clients||[]).map(c=>`
+      <div class="logoCard">
+        ${c.file ? `<img src="${c.file}" alt="${escapeHtml(c.name)}" loading="lazy">`
+                 : `<div class="badge"><strong>Cliente</strong> <span>${escapeHtml(c.name)}</span></div>`}
+        <div class="t">${escapeHtml(c.name)}</div>
+        ${c.desc ? `<div class="d">${escapeHtml(excerpt(c.desc))}</div>` : ``}
+      </div>
+    `).join('');
+  }
+
+  function renderCourses(){
+    const host=$('#coursesBody');
+    if(!host) return;
+    const types=Array.from(new Set((D.courses||[]).flatMap(c=>{
+      const raw = Array.isArray(c.tags) ? c.tags : (c.type ? [c.type] : []);
+      return raw.map(x=>String(x||'').trim()).filter(Boolean);
+    }))).sort((a,b)=>a.localeCompare(b,'es',{sensitivity:'base'}));
+    const typeSel=$('#typeFilter');
+    if(typeSel){
+      typeSel.innerHTML = `<option value="">Todos los tags</option>` + types.map(t=>`<option>${escapeHtml(t)}</option>`).join('');
+    }
+    const years=Array.from(new Set((D.courses||[]).map(c=>c.year))).sort();
+    const yearSel=$('#yearFilter');
+    if(yearSel){
+      yearSel.innerHTML = `<option value="">Todos los años</option>` + years.map(y=>`<option>${escapeHtml(String(y))}</option>`).join('');
+    }
+
+    function apply(){
+      const q=($('#qCourse')?.value||'').toLowerCase().trim();
+      const t=($('#typeFilter')?.value||'').trim();
+      const y=($('#yearFilter')?.value||'').trim();
+      const rows=(D.courses||[]).filter(c=>{
+        const tags=(Array.isArray(c.tags) ? c.tags : (c.type ? [c.type] : [])).join(' ');
+        const text=(c.title+' '+c.client+' '+tags+' '+c.year).toLowerCase();
+        if(q && !text.includes(q)) return false;
+        if(t){
+          const list = (Array.isArray(c.tags) ? c.tags : (c.type ? [c.type] : [])).map(x=>String(x||'').trim());
+          if(!list.includes(t)) return false;
+        }
+        if(y && String(c.year)!==y) return false;
+        return true;
+      });
+      $('#coursesCount').textContent = String(rows.length);
+      host.innerHTML = rows.map(c=>`
+        <tr>
+          <td>${escapeHtml(String(c.year))}</td>
+          <td><b>${escapeHtml(c.title)}</b><div style="color:var(--muted);font-size:12px;margin-top:4px">${escapeHtml((Array.isArray(c.tags) ? c.tags : (c.type ? [c.type] : [])).join(', '))}</div></td>
+          <td>${escapeHtml(c.client||'')}</td>
+        </tr>
+      `).join('');
+    }
+
+    ['input','change'].forEach(ev=>{
+      $('#qCourse')?.addEventListener(ev, apply);
+      $('#typeFilter')?.addEventListener(ev, apply);
+      $('#yearFilter')?.addEventListener(ev, apply);
+    });
+    apply();
+  }
+
+  function renderCerts(){
+    const host=$('#certsGrid');
+    if(!host) return;
+    const certs=D.certifications||[];
+    const areas=Array.from(new Set(certs.map(c=>c.area))).sort();
+    const levels=Array.from(new Set(certs.map(c=>c.level))).sort();
+    const areaSel=$('#areaFilter'); const levelSel=$('#levelFilter');
+    if(areaSel) areaSel.innerHTML = `<option value="">Todas las áreas</option>` + areas.map(a=>`<option>${escapeHtml(a)}</option>`).join('');
+    if(levelSel) levelSel.innerHTML = `<option value="">Todos los niveles</option>` + levels.map(l=>`<option>${escapeHtml(l)}</option>`).join('');
+
+    function apply(){
+      const q=($('#qCert')?.value||'').toLowerCase().trim();
+      const a=($('#areaFilter')?.value||'').trim();
+      const l=($('#levelFilter')?.value||'').trim();
+      const rows=certs.filter(c=>{
+        const text=(c.title+' '+c.area+' '+c.level+' '+c.year).toLowerCase();
+        if(q && !text.includes(q)) return false;
+        if(a && c.area!==a) return false;
+        if(l && c.level!==l) return false;
+        return true;
+      });
+      $('#certsCount').textContent = String(rows.length);
+      host.innerHTML = rows.map(c=>`
+        <div class="certCard" data-file="${c.file}" data-title="${escapeHtml(c.title)}">
+          <img src="${c.file}" alt="${escapeHtml(c.title)}" loading="lazy">
+          <div class="t">${escapeHtml(c.title)}</div>
+          <div class="m">${escapeHtml(String(c.year))} · ${escapeHtml(c.level)} · ${escapeHtml(c.area)}</div>
+        </div>
+      `).join('');
+      $$('.certCard', host).forEach(card=>card.addEventListener('click', ()=>openModal(card.getAttribute('data-file'), card.getAttribute('data-title'))));
+    }
+    ['input','change'].forEach(ev=>{
+      $('#qCert')?.addEventListener(ev, apply);
+      $('#areaFilter')?.addEventListener(ev, apply);
+      $('#levelFilter')?.addEventListener(ev, apply);
+    });
+    apply();
+  }
+
+  function openModal(src,title){
+    const modal=$('#modal'); if(!modal) return;
+    $('#modalImg').src = src;
+    $('#modalImg').alt = title || 'cert';
+    modal.classList.add('open');
+  }
+  function closeModal(){
+    const modal=$('#modal'); if(!modal) return;
+    modal.classList.remove('open');
+    $('#modalImg').src='';
+  }
+  function wireModal(){
+    const modal=$('#modal'); if(!modal) return;
+    $('#closeModal')?.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+  }
+
+  function escapeHtml(s){
+    return String(s??'').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    setActiveNav();
+    renderHero();
+    kpis();
+    renderServices();
+    renderHighlights();
+    renderExperience();
+    renderClients();
+    renderCourses();
+    renderCerts();
+    wireModal();
+  });
+})();
+
+
+
+// ===============================
+document.addEventListener("DOMContentLoaded", function(){
+
+  if(typeof window.SITE_DATA === "undefined") return;
+
+  const data = window.SITE_DATA;
+
+  const courses = Array.isArray(data.courses) ? data.courses.length : 0;
+  const clients = Array.isArray(data.clients) ? data.clients.length : 0;
+  const experience = Array.isArray(data.experience) ? data.experience.length : 0;
+  const certs = Array.isArray(data.certifications) ? data.certifications.length : 0;
+
+  const set = (id,val)=>{
+    const el = document.getElementById(id);
+    if(el) el.textContent = val;
+  };
+
+  set("kpiCourses", courses);
+  set("kpiClients", clients);
+  set("kpiExperience", experience);
+  set("kpiCerts", certs);
+
+});
+
+
+// ===============================
+// Smart KPIs + smooth counter (Local First)
+// ===============================
+(function(){
+  function num(n){ return (typeof n === 'number' && isFinite(n)) ? n : (isFinite(parseFloat(n)) ? parseFloat(n) : 0); }
+  function uniq(arr){ return Array.from(new Set(arr.filter(Boolean))); }
+  function yearsFromDates(dates){
+    const s = String(dates||'');
+    const ys = (s.match(/\b\d{4}\b/g) || []).map(x=>parseInt(x,10)).filter(x=>x>1900 && x<3000);
+    return ys;
+  }
+  function formatInt(n){
+    try { return new Intl.NumberFormat('es-ES').format(Math.round(n)); }
+    catch(_e){ return String(Math.round(n)); }
+  }
+  function animateCount(el, target, opts){
+    opts = opts || {};
+    const dur = opts.duration || 900;
+    const suffix = opts.suffix || '';
+    const start = 0;
+    const t0 = performance.now();
+    function tick(t){
+      const p = Math.min(1, (t - t0) / dur);
+      const e = 1 - Math.pow(1 - p, 3); // easeOutCubic
+      const v = start + (target - start) * e;
+      el.textContent = formatInt(v) + suffix;
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    if(typeof window.SITE_DATA === 'undefined') return;
+    const data = window.SITE_DATA;
+
+    const courses = Array.isArray(data.courses) ? data.courses : [];
+    const clientsArr = Array.isArray(data.clients) ? data.clients : [];
+    const exp = Array.isArray(data.experience) ? data.experience : [];
+    const certs = Array.isArray(data.certifications) ? data.certifications : [];
+
+    const totalCourses = courses.length;
+    const totalHours = courses.reduce((acc,c)=> acc + num(c.total_hours || c.hours || 0), 0);
+    const techs = uniq(courses.flatMap(c => {
+      const raw = Array.isArray(c.tags) ? c.tags : (c.type ? [c.type] : []);
+      return raw.map(x=>String(x||'').trim()).filter(t=>t && t!=='—');
+    }));
+    const courseClients = uniq(courses.map(c => String(c.client||'').trim()).filter(Boolean));
+    const totalClients = Math.max(clientsArr.length, courseClients.length);
+
+    // Experience years
+    let years = [];
+    exp.forEach(e => years = years.concat(yearsFromDates(e.dates)));
+    if(!years.length){
+      courses.forEach(c => { const y = parseInt(c.year,10); if(y) years.push(y); });
+    }
+    const nowY = (new Date()).getFullYear();
+    const minYear = years.length ? Math.min.apply(null, years) : nowY;
+    const expYears = Math.max(1, nowY - minYear + 1);
+
+    const set = (id,val,opts)=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      animateCount(el, val, opts);
+    };
+
+    set('kpiCourses', totalCourses);
+    set('kpiHours', totalHours, {suffix:'h'});
+    set('kpiClients', totalClients);
+    set('kpiTech', techs.length);
+    set('kpiExpYears', expYears);
+
+    // If somewhere else you have certs KPI, keep it updated too
+    const elCert = document.getElementById('kpiCerts');
+    if(elCert) animateCount(elCert, certs.length);
+  });
+})();
+

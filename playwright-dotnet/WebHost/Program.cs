@@ -1,0 +1,129 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.FileProviders;
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRazorPages();
+var app = builder.Build();
+
+// Serve dynamic site-data JS/JSON endpoints before static files so clients can request server-generated data
+var staticPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "web-local-instrumented"));
+
+app.MapGet("/site-data.json", async context =>
+{
+    if (!Directory.Exists(staticPath))
+    {
+        context.Response.StatusCode = 404;
+        await context.Response.WriteAsync("Site data not found");
+        return;
+    }
+
+    var dataFile = Path.Combine(staticPath, "data.js");
+    if (!System.IO.File.Exists(dataFile))
+    {
+        context.Response.StatusCode = 404;
+        await context.Response.WriteAsync("Site data file missing");
+        return;
+    }
+
+    var text = await System.IO.File.ReadAllTextAsync(dataFile);
+    // Extract JSON object after the assignment 'globalThis.SITE_DATA ='
+    var marker = "globalThis.SITE_DATA =";
+    var idx = text.IndexOf(marker);
+    if (idx == -1)
+    {
+        context.Response.StatusCode = 500;
+        await context.Response.WriteAsync("SITE_DATA marker not found in data file");
+        return;
+    }
+
+    var jsonStart = text.IndexOf('{', idx);
+    if (jsonStart == -1)
+    {
+        context.Response.StatusCode = 500;
+        await context.Response.WriteAsync("Malformed SITE_DATA JSON start");
+        return;
+    }
+
+    // Find matching closing brace '}' for the JSON object
+    int pos = jsonStart;
+    int depth = 0;
+    while (pos < text.Length)
+    {
+        if (text[pos] == '{') depth++;
+        else if (text[pos] == '}') depth--;
+        pos++;
+        if (depth == 0) break;
+    }
+
+    if (depth != 0)
+    {
+        context.Response.StatusCode = 500;
+        await context.Response.WriteAsync("Malformed SITE_DATA JSON end");
+        return;
+    }
+
+    var json = text.Substring(jsonStart, pos - jsonStart);
+    context.Response.ContentType = "application/json; charset=utf-8";
+    await context.Response.WriteAsync(json);
+});
+
+// Serve data.js as a JS assignment so existing client code that expects window.SITE_DATA continues working
+app.MapGet("/assets/js/data.js", async context =>
+{
+    if (!Directory.Exists(staticPath))
+    {
+        context.Response.StatusCode = 404;
+        await context.Response.WriteAsync("// data not found");
+        return;
+    }
+
+    var dataFile = Path.Combine(staticPath, "data.js");
+    if (!System.IO.File.Exists(dataFile))
+    {
+        context.Response.StatusCode = 404;
+        await context.Response.WriteAsync("// data file missing");
+        return;
+    }
+
+    var text = await System.IO.File.ReadAllTextAsync(dataFile);
+    var marker = "globalThis.SITE_DATA =";
+    var idx = text.IndexOf(marker);
+    if (idx == -1)
+    {
+        context.Response.StatusCode = 500;
+        await context.Response.WriteAsync("// SITE_DATA marker not found");
+        return;
+    }
+
+    var jsonStart = text.IndexOf('{', idx);
+    int pos = jsonStart;
+    int depth = 0;
+    while (pos < text.Length)
+    {
+        if (text[pos] == '{') depth++;
+        else if (text[pos] == '}') depth--;
+        pos++;
+        if (depth == 0) break;
+    }
+
+    var json = text.Substring(jsonStart, pos - jsonStart);
+    var js = "window.SITE_DATA = " + json + ";";
+    context.Response.ContentType = "application/javascript; charset=utf-8";
+    await context.Response.WriteAsync(js);
+});
+
+// Map Razor pages (our converted views)
+app.MapRazorPages();
+
+if (Directory.Exists(staticPath))
+{
+    var provider = new PhysicalFileProvider(staticPath);
+    app.UseDefaultFiles(new DefaultFilesOptions { FileProvider = provider });
+    app.UseStaticFiles(new StaticFileOptions { FileProvider = provider });
+}
+else
+{
+    app.MapGet("/", () => "Static site not found. Place web-local-instrumented folder at repository root.");
+}
+
+app.Run();

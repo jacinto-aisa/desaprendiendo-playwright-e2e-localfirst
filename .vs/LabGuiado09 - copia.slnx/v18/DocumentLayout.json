@@ -1,0 +1,984 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\LabGuiado09 - copia\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\PlaywrightFixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\PlaywrightFixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\ApiFixtures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\ApiFixtures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\AppFixtures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\AppFixtures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\desap\\.copilot\\plans\\plan-convertir-carpeta-tests-(ts)-a-c-playwright-for-.net.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|MarkdownSecurePreview"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagCursosEtiquetas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagCursosEtiquetas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\NuGet.Config||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:NuGet.Config||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\cursos.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\cursos.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\clientes.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\clientes.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\print_cursos.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\print_cursos.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local\\cursos_graph.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local\\cursos_graph.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local\\cursos.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local\\cursos.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local\\print_cursos.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local\\print_cursos.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local\\metodo_docente.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local\\metodo_docente.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local\\clientes.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local\\clientes.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local\\certificaciones.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local\\certificaciones.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\certificaciones.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\certificaciones.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\base.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\assets\\js\\base.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\cursos.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\assets\\js\\cursos.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\cursos_graph.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\assets\\js\\cursos_graph.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\assets\\js\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\experiencia.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\assets\\js\\experiencia.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\certificaciones.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\assets\\js\\certificaciones.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\clientes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\assets\\js\\clientes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\jardin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\assets\\js\\jardin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\metodo_docente.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\assets\\js\\metodo_docente.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\cursos_view_toggle.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\assets\\js\\cursos_view_toggle.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\print_courses.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\assets\\js\\print_courses.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagCursosGrafico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagCursosGrafico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Flows\\PedirInformacionCursoFlow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Flows\\PedirInformacionCursoFlow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Data\\Flows\\EscenarioPedirInformacionCurso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Data\\Flows\\EscenarioPedirInformacionCurso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Tests\\PedirInformacionCursoTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Tests\\PedirInformacionCursoTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Data\\Flows\\PedirInformacionCursoBuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Data\\Flows\\PedirInformacionCursoBuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\metodo_docente.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\metodo_docente.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\jardin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\jardin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\experiencia.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\experiencia.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\WebHost\\Pages\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\CursosEtiquetas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\WebHost\\Pages\\CursosEtiquetas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\CursosGraph.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\WebHost\\Pages\\CursosGraph.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\cursos_graph.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\cursos_graph.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\cursos_etiquetas.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\cursos_etiquetas.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Models\\SiteDataModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\WebHost\\Models\\SiteDataModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local-instrumented\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local-instrumented\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\web-local\\cursos_etiquetas.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:web-local\\cursos_etiquetas.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\CursosEtiquetas.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\WebHost\\Pages\\CursosEtiquetas.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\CursosGraph.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\WebHost\\Pages\\CursosGraph.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\Index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\WebHost\\Pages\\Index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\WebHost\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\create_github_repo.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\create_github_repo.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\WebHost.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\WebHost\\WebHost.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.sln||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.sln||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\.github\\workflows\\ci.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.github\\workflows\\ci.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\.github\\workflows\\deploy_static_site.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.github\\workflows\\deploy_static_site.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\README_ADDITIONAL.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\README_ADDITIONAL.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagMetodo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagMetodo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Tests\\VerbosHttpTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Tests\\VerbosHttpTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\PlaywrightDotnet.Tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\PlaywrightDotnet.Tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Components\\ContactoDirectoComponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Components\\ContactoDirectoComponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PaginaBase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PaginaBase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "print_cursos.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\print_cursos.html",
+              "RelativeDocumentMoniker": "web-local-instrumented\\print_cursos.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\print_cursos.html",
+              "RelativeToolTip": "web-local-instrumented\\print_cursos.html",
+              "ViewState": "AgIAAHkAAAAAAAAAAABhwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:40:57.048Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApiFixtures.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\ApiFixtures.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\ApiFixtures.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\ApiFixtures.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\ApiFixtures.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T16:05:02.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppFixtures.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\AppFixtures.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\AppFixtures.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\AppFixtures.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\AppFixtures.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T16:04:26.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "PaginaBase.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PaginaBase.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PaginaBase.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PaginaBase.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PaginaBase.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T15:56:52.148Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "ContactoDirectoComponent.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Components\\ContactoDirectoComponent.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Components\\ContactoDirectoComponent.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Components\\ContactoDirectoComponent.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Components\\ContactoDirectoComponent.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T15:56:11.196Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "PlaywrightDotnet.Tests.csproj",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\PlaywrightDotnet.Tests.csproj",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\PlaywrightDotnet.Tests.csproj",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\PlaywrightDotnet.Tests.csproj",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\PlaywrightDotnet.Tests.csproj",
+              "ViewState": "AgIAAAYAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-18T15:56:06.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "VerbosHttpTests.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Tests\\VerbosHttpTests.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Tests\\VerbosHttpTests.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Tests\\VerbosHttpTests.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Tests\\VerbosHttpTests.cs",
+              "ViewState": "AgIAAIYAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T15:52:41.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "PagMetodo.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagMetodo.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagMetodo.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagMetodo.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagMetodo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T15:24:56.02Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlaywrightFixture.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\PlaywrightFixture.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\PlaywrightFixture.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\PlaywrightFixture.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\PlaywrightFixture.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAcwAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T15:24:31.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "plan-convertir-carpeta-tests-(ts)-a-c-playwright-for-.net.md [Versi\u00F3n preliminar]",
+              "DocumentMoniker": "C:\\Users\\desap\\.copilot\\plans\\plan-convertir-carpeta-tests-(ts)-a-c-playwright-for-.net.md",
+              "RelativeDocumentMoniker": "..\\Users\\desap\\.copilot\\plans\\plan-convertir-carpeta-tests-(ts)-a-c-playwright-for-.net.md",
+              "ToolTip": "C:\\Users\\desap\\.copilot\\plans\\plan-convertir-carpeta-tests-(ts)-a-c-playwright-for-.net.md [Versi\u00F3n preliminar]",
+              "RelativeToolTip": "..\\Users\\desap\\.copilot\\plans\\plan-convertir-carpeta-tests-(ts)-a-c-playwright-for-.net.md [Versi\u00F3n preliminar]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-18T15:21:57.233Z",
+              "EditorCaption": " [Versi\u00F3n preliminar]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NuGet.Config",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\NuGet.Config",
+              "RelativeDocumentMoniker": "NuGet.Config",
+              "ToolTip": "C:\\LabGuiado09 - copia\\NuGet.Config",
+              "RelativeToolTip": "NuGet.Config",
+              "ViewState": "AgIAAAsAAAAAAAAAAIBZwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-06-18T11:51:47.541Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "README_ADDITIONAL.md",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\README_ADDITIONAL.md",
+              "RelativeDocumentMoniker": "playwright-dotnet\\README_ADDITIONAL.md",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\README_ADDITIONAL.md",
+              "RelativeToolTip": "playwright-dotnet\\README_ADDITIONAL.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-18T11:48:01.201Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\.gitignore",
+              "RelativeDocumentMoniker": "playwright-dotnet\\.gitignore",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\.gitignore",
+              "RelativeToolTip": "playwright-dotnet\\.gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-18T11:48:01.153Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "deploy_static_site.yml",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\.github\\workflows\\deploy_static_site.yml",
+              "RelativeDocumentMoniker": ".github\\workflows\\deploy_static_site.yml",
+              "ToolTip": "C:\\LabGuiado09 - copia\\.github\\workflows\\deploy_static_site.yml",
+              "RelativeToolTip": ".github\\workflows\\deploy_static_site.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-06-18T11:48:01.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "ci.yml",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\.github\\workflows\\ci.yml",
+              "RelativeDocumentMoniker": ".github\\workflows\\ci.yml",
+              "ToolTip": "C:\\LabGuiado09 - copia\\.github\\workflows\\ci.yml",
+              "RelativeToolTip": ".github\\workflows\\ci.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-06-18T11:48:01.048Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "PlaywrightDotnet.sln",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.sln",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.sln",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.sln",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.sln",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002855|",
+              "WhenOpened": "2026-06-18T11:48:00.995Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "WebHost.csproj",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\WebHost.csproj",
+              "RelativeDocumentMoniker": "playwright-dotnet\\WebHost\\WebHost.csproj",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\WebHost.csproj",
+              "RelativeToolTip": "playwright-dotnet\\WebHost\\WebHost.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-18T11:48:00.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "create_github_repo.ps1",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\create_github_repo.ps1",
+              "RelativeDocumentMoniker": "playwright-dotnet\\create_github_repo.ps1",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\create_github_repo.ps1",
+              "RelativeToolTip": "playwright-dotnet\\create_github_repo.ps1",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-18T11:48:00.83Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Program.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\WebHost\\Program.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Program.cs",
+              "RelativeToolTip": "playwright-dotnet\\WebHost\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T11:48:00.759Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\WebHost\\Pages\\Index.cshtml.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\Index.cshtml.cs",
+              "RelativeToolTip": "playwright-dotnet\\WebHost\\Pages\\Index.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T11:48:00.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "CursosGraph.cshtml.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\CursosGraph.cshtml.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\WebHost\\Pages\\CursosGraph.cshtml.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\CursosGraph.cshtml.cs",
+              "RelativeToolTip": "playwright-dotnet\\WebHost\\Pages\\CursosGraph.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T11:48:00.618Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "CursosEtiquetas.cshtml.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\CursosEtiquetas.cshtml.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\WebHost\\Pages\\CursosEtiquetas.cshtml.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\CursosEtiquetas.cshtml.cs",
+              "RelativeToolTip": "playwright-dotnet\\WebHost\\Pages\\CursosEtiquetas.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T11:48:00.562Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "cursos_etiquetas.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local\\cursos_etiquetas.html",
+              "RelativeDocumentMoniker": "web-local\\cursos_etiquetas.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local\\cursos_etiquetas.html",
+              "RelativeToolTip": "web-local\\cursos_etiquetas.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:48:00.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\index.html",
+              "RelativeDocumentMoniker": "web-local-instrumented\\index.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\index.html",
+              "RelativeToolTip": "web-local-instrumented\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:48:00.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "SiteDataModels.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Models\\SiteDataModels.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\WebHost\\Models\\SiteDataModels.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Models\\SiteDataModels.cs",
+              "RelativeToolTip": "playwright-dotnet\\WebHost\\Models\\SiteDataModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T11:48:00.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "cursos_etiquetas.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\cursos_etiquetas.html",
+              "RelativeDocumentMoniker": "web-local-instrumented\\cursos_etiquetas.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\cursos_etiquetas.html",
+              "RelativeToolTip": "web-local-instrumented\\cursos_etiquetas.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:48:00.265Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "cursos_graph.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\cursos_graph.html",
+              "RelativeDocumentMoniker": "web-local-instrumented\\cursos_graph.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\cursos_graph.html",
+              "RelativeToolTip": "web-local-instrumented\\cursos_graph.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:48:00.208Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "CursosGraph.cshtml",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\CursosGraph.cshtml",
+              "RelativeDocumentMoniker": "playwright-dotnet\\WebHost\\Pages\\CursosGraph.cshtml",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\CursosGraph.cshtml",
+              "RelativeToolTip": "playwright-dotnet\\WebHost\\Pages\\CursosGraph.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-18T11:48:00.157Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "CursosEtiquetas.cshtml",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\CursosEtiquetas.cshtml",
+              "RelativeDocumentMoniker": "playwright-dotnet\\WebHost\\Pages\\CursosEtiquetas.cshtml",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\CursosEtiquetas.cshtml",
+              "RelativeToolTip": "playwright-dotnet\\WebHost\\Pages\\CursosEtiquetas.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-18T11:48:00.105Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\Index.cshtml",
+              "RelativeDocumentMoniker": "playwright-dotnet\\WebHost\\Pages\\Index.cshtml",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\WebHost\\Pages\\Index.cshtml",
+              "RelativeToolTip": "playwright-dotnet\\WebHost\\Pages\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-18T11:47:59.206Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "experiencia.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\experiencia.html",
+              "RelativeDocumentMoniker": "web-local-instrumented\\experiencia.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\experiencia.html",
+              "RelativeToolTip": "web-local-instrumented\\experiencia.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:47:59.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "jardin.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\jardin.html",
+              "RelativeDocumentMoniker": "web-local-instrumented\\jardin.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\jardin.html",
+              "RelativeToolTip": "web-local-instrumented\\jardin.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:47:59.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "metodo_docente.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\metodo_docente.html",
+              "RelativeDocumentMoniker": "web-local-instrumented\\metodo_docente.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\metodo_docente.html",
+              "RelativeToolTip": "web-local-instrumented\\metodo_docente.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:47:58.961Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "PedirInformacionCursoBuilder.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Data\\Flows\\PedirInformacionCursoBuilder.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Data\\Flows\\PedirInformacionCursoBuilder.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Data\\Flows\\PedirInformacionCursoBuilder.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Data\\Flows\\PedirInformacionCursoBuilder.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T11:46:34.862Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "PedirInformacionCursoTests.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Tests\\PedirInformacionCursoTests.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Tests\\PedirInformacionCursoTests.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Tests\\PedirInformacionCursoTests.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Tests\\PedirInformacionCursoTests.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T11:46:23.248Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "EscenarioPedirInformacionCurso.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Data\\Flows\\EscenarioPedirInformacionCurso.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Data\\Flows\\EscenarioPedirInformacionCurso.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Data\\Flows\\EscenarioPedirInformacionCurso.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Data\\Flows\\EscenarioPedirInformacionCurso.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T11:45:53.503Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "PedirInformacionCursoFlow.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Flows\\PedirInformacionCursoFlow.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Flows\\PedirInformacionCursoFlow.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Flows\\PedirInformacionCursoFlow.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Flows\\PedirInformacionCursoFlow.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T11:45:29.451Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "PagCursosGrafico.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagCursosGrafico.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagCursosGrafico.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagCursosGrafico.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagCursosGrafico.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAIBJwAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T11:45:12.027Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PagCursosEtiquetas.cs",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagCursosEtiquetas.cs",
+              "RelativeDocumentMoniker": "playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagCursosEtiquetas.cs",
+              "ToolTip": "C:\\LabGuiado09 - copia\\playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagCursosEtiquetas.cs",
+              "RelativeToolTip": "playwright-dotnet\\PlaywrightDotnet.Tests\\Pom\\PagCursosEtiquetas.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T11:45:00.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "print_courses.js",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\print_courses.js",
+              "RelativeDocumentMoniker": "web-local-instrumented\\assets\\js\\print_courses.js",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\print_courses.js",
+              "RelativeToolTip": "web-local-instrumented\\assets\\js\\print_courses.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-06-18T11:43:50.324Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "cursos_view_toggle.js",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\cursos_view_toggle.js",
+              "RelativeDocumentMoniker": "web-local-instrumented\\assets\\js\\cursos_view_toggle.js",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\cursos_view_toggle.js",
+              "RelativeToolTip": "web-local-instrumented\\assets\\js\\cursos_view_toggle.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-06-18T11:43:46.654Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "metodo_docente.js",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\metodo_docente.js",
+              "RelativeDocumentMoniker": "web-local-instrumented\\assets\\js\\metodo_docente.js",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\metodo_docente.js",
+              "RelativeToolTip": "web-local-instrumented\\assets\\js\\metodo_docente.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-06-18T11:43:42.505Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "jardin.js",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\jardin.js",
+              "RelativeDocumentMoniker": "web-local-instrumented\\assets\\js\\jardin.js",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\jardin.js",
+              "RelativeToolTip": "web-local-instrumented\\assets\\js\\jardin.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-06-18T11:43:38.319Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "clientes.js",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\clientes.js",
+              "RelativeDocumentMoniker": "web-local-instrumented\\assets\\js\\clientes.js",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\clientes.js",
+              "RelativeToolTip": "web-local-instrumented\\assets\\js\\clientes.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-06-18T11:43:34.621Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "certificaciones.js",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\certificaciones.js",
+              "RelativeDocumentMoniker": "web-local-instrumented\\assets\\js\\certificaciones.js",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\certificaciones.js",
+              "RelativeToolTip": "web-local-instrumented\\assets\\js\\certificaciones.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-06-18T11:43:30.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "experiencia.js",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\experiencia.js",
+              "RelativeDocumentMoniker": "web-local-instrumented\\assets\\js\\experiencia.js",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\experiencia.js",
+              "RelativeToolTip": "web-local-instrumented\\assets\\js\\experiencia.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-06-18T11:43:09.049Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "index.js",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\index.js",
+              "RelativeDocumentMoniker": "web-local-instrumented\\assets\\js\\index.js",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\index.js",
+              "RelativeToolTip": "web-local-instrumented\\assets\\js\\index.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-06-18T11:43:05.272Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "cursos_graph.js",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\cursos_graph.js",
+              "RelativeDocumentMoniker": "web-local-instrumented\\assets\\js\\cursos_graph.js",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\cursos_graph.js",
+              "RelativeToolTip": "web-local-instrumented\\assets\\js\\cursos_graph.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-06-18T11:42:58.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "cursos.js",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\cursos.js",
+              "RelativeDocumentMoniker": "web-local-instrumented\\assets\\js\\cursos.js",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\cursos.js",
+              "RelativeToolTip": "web-local-instrumented\\assets\\js\\cursos.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-06-18T11:42:54.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "base.js",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\base.js",
+              "RelativeDocumentMoniker": "web-local-instrumented\\assets\\js\\base.js",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\assets\\js\\base.js",
+              "RelativeToolTip": "web-local-instrumented\\assets\\js\\base.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-06-18T11:42:49.07Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "certificaciones.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\certificaciones.html",
+              "RelativeDocumentMoniker": "web-local-instrumented\\certificaciones.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\certificaciones.html",
+              "RelativeToolTip": "web-local-instrumented\\certificaciones.html",
+              "ViewState": "AgIAAE8AAAAAAAAAAMBdwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:42:25.593Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "certificaciones.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local\\certificaciones.html",
+              "RelativeDocumentMoniker": "web-local\\certificaciones.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local\\certificaciones.html",
+              "RelativeToolTip": "web-local\\certificaciones.html",
+              "ViewState": "AgIAAE8AAAAAAAAAAMBdwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:42:05.241Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "clientes.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local\\clientes.html",
+              "RelativeDocumentMoniker": "web-local\\clientes.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local\\clientes.html",
+              "RelativeToolTip": "web-local\\clientes.html",
+              "ViewState": "AgIAADQAAAAAAAAAAMBdwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:41:52.124Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "metodo_docente.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local\\metodo_docente.html",
+              "RelativeDocumentMoniker": "web-local\\metodo_docente.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local\\metodo_docente.html",
+              "RelativeToolTip": "web-local\\metodo_docente.html",
+              "ViewState": "AgIAAJIAAAAAAAAAAABhwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:41:43.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "print_cursos.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local\\print_cursos.html",
+              "RelativeDocumentMoniker": "web-local\\print_cursos.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local\\print_cursos.html",
+              "RelativeToolTip": "web-local\\print_cursos.html",
+              "ViewState": "AgIAAHkAAAAAAAAAAABhwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:41:36.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "cursos.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local\\cursos.html",
+              "RelativeDocumentMoniker": "web-local\\cursos.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local\\cursos.html",
+              "RelativeToolTip": "web-local\\cursos.html",
+              "ViewState": "AgIAAFkAAAAAAAAAAABhwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:41:30.054Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "cursos_graph.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local\\cursos_graph.html",
+              "RelativeDocumentMoniker": "web-local\\cursos_graph.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local\\cursos_graph.html",
+              "RelativeToolTip": "web-local\\cursos_graph.html",
+              "ViewState": "AgIAAHMAAAAAAAAAAABhwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:41:22.351Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local\\index.html",
+              "RelativeDocumentMoniker": "web-local\\index.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local\\index.html",
+              "RelativeToolTip": "web-local\\index.html",
+              "ViewState": "AgIAAGEAAAAAAAAAAMBdwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:41:14.887Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "clientes.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\clientes.html",
+              "RelativeDocumentMoniker": "web-local-instrumented\\clientes.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\clientes.html",
+              "RelativeToolTip": "web-local-instrumented\\clientes.html",
+              "ViewState": "AgIAADQAAAAAAAAAAMBdwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:40:49.065Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "cursos.html",
+              "DocumentMoniker": "C:\\LabGuiado09 - copia\\web-local-instrumented\\cursos.html",
+              "RelativeDocumentMoniker": "web-local-instrumented\\cursos.html",
+              "ToolTip": "C:\\LabGuiado09 - copia\\web-local-instrumented\\cursos.html",
+              "RelativeToolTip": "web-local-instrumented\\cursos.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAOBvwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-18T11:40:40.872Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

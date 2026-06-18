@@ -1,0 +1,41 @@
+using System.Threading.Tasks;
+using Microsoft.Playwright;
+
+namespace PlaywrightDotnet.Tests.Pom
+{
+    public abstract class PaginaBase
+    {
+        protected readonly IPage Page;
+        // Public accessor for underlying IPage to allow flows/components to interact
+        // without exposing the field directly.
+        public IPage GetPage() => Page;
+        private readonly string ruta;
+        private readonly object tituloEsperado;
+
+        protected PaginaBase(IPage page, string ruta, object tituloEsperado)
+        {
+            Page = page;
+            this.ruta = ruta;
+            this.tituloEsperado = tituloEsperado;
+        }
+
+        public virtual async Task<bool> OpenAsync()
+        {
+            var response = await Page.GotoAsync(ruta);
+            return response?.Ok ?? false;
+        }
+
+        public ILocator Titulo() => Page.Locator("role=heading", new PageLocatorOptions { HasText = tituloEsperado.ToString() });
+
+        public async Task DeberiaEstarCargadaAsync() => await Titulo().WaitForAsync(new LocatorWaitForOptions { State = WaitForSelectorState.Visible });
+
+        public async Task AbrirYComprobarAsync()
+        {
+            var opened = await OpenAsync();
+            if (!opened) throw new System.Exception("No se pudo abrir la página");
+            await DeberiaEstarCargadaAsync();
+        }
+
+        public string RutaEsperada() => ruta;
+    }
+}

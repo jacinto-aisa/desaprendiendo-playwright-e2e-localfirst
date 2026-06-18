@@ -1,0 +1,13 @@
+﻿export type EntornoE2E = 'prod' | 'local';
+
+export function entornoActual(): EntornoE2E {
+  return process.env.E2E_TARGET === 'local' ? 'local' : 'prod';
+}
+
+export function esLocalFirst(): boolean {
+  return entornoActual() === 'local';
+}
+
+export function esProduccion(): boolean {
+  return entornoActual() === 'prod';
+}

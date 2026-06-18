@@ -1,4 +1,0 @@
-// clientes.js — lógica específica de página (placeholder)
-// Por ahora, la lógica común está en assets/js/base.js.
-// Aquí iremos mejorando página a página sin tocar el resto.
-(function(){ /* no-op */ })();

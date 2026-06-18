@@ -1,8 +1,0 @@
-import { Page } from '@playwright/test';
-import { PaginaBase } from './PaginaBase';
-
-export class PagCursosEtiquetas extends PaginaBase {
-  constructor(page: Page) {
-    super(page, '/cursos_etiquetas.html', 'Cursos');
-  }
-}

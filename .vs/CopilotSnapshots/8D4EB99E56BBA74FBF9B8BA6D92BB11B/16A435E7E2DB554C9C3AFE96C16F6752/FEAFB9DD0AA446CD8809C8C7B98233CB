@@ -1,0 +1,11 @@
+﻿import { Page } from '@playwright/test';
+import { PaginaBase } from './PaginaBase';
+
+export class PagExperiencia extends PaginaBase {
+  constructor(page: Page) {
+    super(page, '/experiencia.html', 'Experiencia');
+  }
+  async estaImagenFotoVisible() : Promise<boolean> {
+    return await this.page.getByRole('heading', { name: "Experiencia" }).isVisible();
+  }
+}

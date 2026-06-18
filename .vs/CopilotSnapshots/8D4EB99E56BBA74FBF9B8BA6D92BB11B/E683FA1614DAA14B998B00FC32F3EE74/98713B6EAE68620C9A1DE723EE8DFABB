@@ -1,0 +1,39 @@
+﻿using System.Threading.Tasks;
+using PlaywrightDotnet.Tests.Data.Flows;
+using PlaywrightDotnet.Tests.Factories;
+using PlaywrightDotnet.Tests.Fixtures;
+using PlaywrightDotnet.Tests.Flows;
+using Xunit;
+
+namespace PlaywrightDotnet.Tests.Tests
+{
+    public class PedirInformacionCursoTests : IClassFixture<PlaywrightFixture>
+    {
+        private readonly PlaywrightFixture fixture;
+
+        public PedirInformacionCursoTests(PlaywrightFixture fixture)
+        {
+            this.fixture = fixture;
+        }
+
+        [Fact]
+        public async Task PermitePedirInformacionCursoDesdeCursosGraph()
+        {
+            if (!PlaywrightDotnet.Tests.Support.EntornoE2E.EsLocalFirst()) return;
+
+            var fabrica = new FabricaPaginas(fixture.Page);
+            var pagCursosGrafico = fabrica.CrearCursosGrafico();
+            var flow = new PedirInformacionCursoFlow(pagCursosGrafico);
+
+            var escenario = new PedirInformacionCursoBuilder()
+                .SeleccionandoBurbujas(1, 2, 1)
+                .DesplegandoGrupo(2)
+                .ConAccionFinal("solicitarPrimerCurso")
+                .Build();
+
+            await flow.PedirInformacionCursoAsync(escenario);
+
+            Assert.Matches("cursos_graph\\.html$", fixture.Page.Url);
+        }
+    }
+}

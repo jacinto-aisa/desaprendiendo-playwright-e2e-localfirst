@@ -1,0 +1,39 @@
+﻿(function(){
+  function showResult(type){
+    var box = document.getElementById('designResult');
+    if(!box) return;
+    box.className = 'resultBox ' + (type === 'good' ? 'good' : 'bad');
+    if(type === 'good'){
+      box.innerHTML = '<strong>Diseño preparado para crecer.</strong>Has modelado el alquiler: identificador, tiempo, tarifa y cálculo. Si mañana aparecen trasteros, patinetes o bicicletas, no tienes que rehacer el sistema completo; añades comportamiento.';
+    }else{
+      box.innerHTML = '<strong>Funciona hoy, pero queda atado al presente.</strong>Has modelado un vehículo con detalles que quizá no importan para cobrar: marca, color o modelo. Cuando el negocio cambie, el diseño empezará a pedir parches.';
+    }
+  }
+  window.chooseDesign = showResult;
+
+  function initReveal(){
+    var items = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      items.forEach(function(el){ el.classList.add('on'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('on');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12});
+    items.forEach(function(el){ observer.observe(el); });
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    initReveal();
+    var person = window.SITE_DATA && window.SITE_DATA.person;
+    var contact = document.getElementById('methodContact');
+    if(person && contact){
+      contact.href = 'mailto:' + person.email_primary + '?subject=' + encodeURIComponent('Formación in-company - Método Desaprendiendo');
+    }
+  });
+})();

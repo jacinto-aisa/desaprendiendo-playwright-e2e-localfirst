@@ -1,0 +1,26 @@
+﻿import { PagCursosGrafico } from "@pom/PagCursosGrafico";
+import { EscenarioPedirInformacionCurso } from "./EscenarioPedirInformacionCurso";
+
+
+export class PedirInformacionCursoFlow {
+  constructor(
+    private readonly pagCursosGrafico: PagCursosGrafico
+  ) {}
+
+  async pedirInformacionCurso(
+    escenario: EscenarioPedirInformacionCurso
+  ): Promise<void> {
+    await this.pagCursosGrafico.abrirYComprobar();
+    await this.pagCursosGrafico.deberiaMostrarGruposDeCursos();
+
+    for (const numeroBurbuja of escenario.burbujas) {
+      await this.pagCursosGrafico.seleccionarBurbujaPorNumero(numeroBurbuja);
+    }
+
+    await this.pagCursosGrafico.desplegarGrupoPorNumero(escenario.grupo);
+
+    if (escenario.accionFinal === 'solicitarPrimerCurso') {
+      await this.pagCursosGrafico.solicitarPrimerCursoDelGrupo(escenario.grupo);
+    }
+  }
+}

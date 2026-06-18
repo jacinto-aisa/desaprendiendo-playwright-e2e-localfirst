@@ -1,0 +1,77 @@
+﻿function cov_ej2aq9mqy() {
+  var path = "web-local/assets/js/certificaciones.js";
+  var hash = "f140ad98f797b9f46e01b85798310833a94b3f4d";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "web-local/assets/js/certificaciones.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 4,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 30
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 4,
+            column: 1
+          },
+          end: {
+            line: 4,
+            column: 2
+          }
+        },
+        loc: {
+          start: {
+            line: 4,
+            column: 11
+          },
+          end: {
+            line: 4,
+            column: 26
+          }
+        },
+        line: 4
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "f140ad98f797b9f46e01b85798310833a94b3f4d"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_ej2aq9mqy = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_ej2aq9mqy();
+cov_ej2aq9mqy().s[0]++;
+// certificaciones.js — lógica específica de página (placeholder)
+// Por ahora, la lógica común está en assets/js/base.js.
+// Aquí iremos mejorando página a página sin tocar el resto.
+(function () {
+  cov_ej2aq9mqy().f[0]++;
+} /* no-op */)();

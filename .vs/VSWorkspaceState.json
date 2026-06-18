@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\playwright-dotnet",
+    "\\playwright-dotnet\\PlaywrightDotnet.Tests",
+    "\\playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures",
+    "\\playwright-dotnet\\PlaywrightDotnet.Tests\\Tests"
+  ],
+  "SelectedNode": "\\playwright-dotnet\\PlaywrightDotnet.Tests\\Fixtures\\PlaywrightFixture.cs",
+  "PreviewInSolutionExplorer": false
+}

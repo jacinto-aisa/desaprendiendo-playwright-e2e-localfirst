@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Clientes · Jacinto Aisa Ibañez</title>
+<link href="assets/css/clientes.css" rel="stylesheet">
+</head>
+<body>
+    <div class="nav">
+        <div class="container">
+            <a class="brand" href="index.html">
+                <img alt="desaprendiendo" src="assets/img/logo_mark.png">
+            </a>
+            <nav class="pills" aria-label="Navegación principal">
+                <a class="pill" href="index.html">Inicio</a>
+                <a class="pill" href="metodo_docente.html">Método</a>
+                <a class="pill" href="jardin.html">JARDIN</a>
+                <a class="pill" href="experiencia.html">Experiencia</a>
+                <a class="pill" href="cursos_etiquetas.html">Cursos etiquetas</a>
+                <a class="pill" href="cursos_graph.html">Cursos graph</a>
+                <a class="pill active" href="clientes.html">Clientes</a>
+                <a class="pill" href="certificaciones.html">Certificaciones</a>
+            </nav>
+        </div>
+    </div>
+<div class="container">
+<div class="hero">
+<div class="heroTop">
+<div>
+<div class="kicker">Confianza &amp; clientes</div>
+<h1>Clientes</h1>
+<p class="sub">Logos y referencias. Si falta alguno, queda reflejado en la lista aunque no haya logotipo disponible.</p><p class="sub">Para nosotros la formación es siempre ClientFirst: orientada y guiada por las necesidades del cliente, su contexto y su ritmo de adopción.</p>
+<div class="badge" style="margin-top:14px"><strong>In-company</strong> <span>Formación siempre en casa del cliente</span></div>
+</div>
+<div class="card" style="padding:0; overflow:hidden">
+<img alt="desaprendiendo" src="assets/img/logo_full.png" style="width:100%; height:190px; object-fit:contain; padding:18px; display:block">
+</div>
+</div>
+</div>
+<div class="card">
+<div class="sectionTitle">
+<h2>Galería</h2>
+<small>Grid responsive · Offline-ready</small>
+</div>
+<div class="gallery" id="clientsGrid" style="margin-top:14px"></div>
+</div>
+<div class="footer">© 2026 Jacinto Aisa Ibañez · desaprendiendo formación · Portfolio offline/host (sin dependencias de servidor).</div>
+</div>
+<div class="modal" id="modal">
+<button type="button" class="closeBtn" id="closeModal">Cerrar ✕</button>
+<div class="modalContent">
+<img alt="" id="modalImg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==">
+</div>
+</div>
+<script src="data.js"></script>
+<script src="assets/js/base.js"></script>
+<script src="assets/js/clientes.js"></script>
+</body>
+</html>

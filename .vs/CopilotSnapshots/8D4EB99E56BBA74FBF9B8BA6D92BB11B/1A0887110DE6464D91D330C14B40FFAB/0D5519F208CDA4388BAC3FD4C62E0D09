@@ -1,0 +1,31 @@
+﻿using Microsoft.Playwright;
+
+namespace PlaywrightDotnet.Tests.Pom
+{
+    public class PagCursosGrafico : PaginaBase
+    {
+        public PagCursosGrafico(IPage page) : base(page, "/cursos_grafico.html", "Cursos - Gráfico") { }
+
+        public async Task DeberiaMostrarGruposDeCursosAsync()
+        {
+            // Placeholder: espera a que los grupos estén visibles
+            await Page.Locator(".curso-group").First.WaitForAsync(new LocatorWaitForOptions { State = WaitForSelectorState.Visible });
+        }
+
+        public async Task SeleccionarBurbujaPorNumeroAsync(int numero)
+        {
+            await Page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = $"bubble-{numero}" }).ClickAsync();
+        }
+
+        public async Task DesplegarGrupoPorNumeroAsync(int grupo)
+        {
+            await Page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = $"group-{grupo}" }).ClickAsync();
+        }
+
+        public async Task SolicitarPrimerCursoDelGrupoAsync(int grupo)
+        {
+            // Suponiendo que el primer curso tenga un botón con data-group
+            await Page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Solicitar información" }).First.ClickAsync();
+        }
+    }
+}

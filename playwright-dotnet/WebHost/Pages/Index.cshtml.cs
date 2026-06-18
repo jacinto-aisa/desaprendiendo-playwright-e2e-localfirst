@@ -1,0 +1,35 @@
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.IO;
+
+public class IndexModel : PageModel
+{
+    public string SiteDataScript { get; private set; } = "window.SITE_DATA = {};";
+
+    public void OnGet()
+    {
+        var staticPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "web-local-instrumented"));
+        var dataFile = Path.Combine(staticPath, "data.js");
+        if (!System.IO.File.Exists(dataFile)) return;
+
+        var text = System.IO.File.ReadAllText(dataFile);
+        var marker = "globalThis.SITE_DATA =";
+        var idx = text.IndexOf(marker);
+        if (idx == -1) return;
+
+        var jsonStart = text.IndexOf('{', idx);
+        if (jsonStart == -1) return;
+
+        int pos = jsonStart; int depth = 0;
+        while (pos < text.Length)
+        {
+            if (text[pos] == '{') depth++;
+            else if (text[pos] == '}') depth--;
+            pos++;
+            if (depth == 0) break;
+        }
+
+        if (depth != 0) return;
+        var json = text.Substring(jsonStart, pos - jsonStart);
+        SiteDataScript = "window.SITE_DATA = " + json + ";";
+    }
+}

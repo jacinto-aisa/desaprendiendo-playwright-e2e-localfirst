@@ -1,0 +1,22 @@
+﻿using Microsoft.Playwright;
+
+namespace PlaywrightDotnet.Tests.Pom
+{
+    public class PagCursosEtiquetas : PaginaBase
+    {
+        public PagCursosEtiquetas(IPage page) : base(page, "/cursos_etiquetas", "Listado de cursos por etiquetas") { }
+
+        public ILocator TagCategoryButtons() => Page.Locator("#tag-categories .tag-category");
+        public ILocator TagItems() => Page.Locator("#tag-categories .tag-item a");
+
+        public async Task SeleccionarTagAsync(string tag)
+        {
+            await Page.Locator($"a[data-tag=\"{tag}\"]").ClickAsync();
+        }
+
+        public async Task EsperarListadoAsync()
+        {
+            await Page.Locator("#courses-list article.course").First.WaitForAsync(new LocatorWaitForOptions { State = WaitForSelectorState.Visible });
+        }
+    }
+}

@@ -7,6 +7,10 @@ namespace PlaywrightDotnet.Tests.Pom
     {
         public PagCursosGrafico(IPage page) : base(page, "/cursos_graph", "Mapa de etiquetas (burbujas)") { }
 
+        // Public accessor for underlying IPage to allow flows/components to interact without
+        // exposing PaginaBase.Page as public.
+        public IPage GetPage() => Page;
+
         public ILocator Bubbles() => Page.Locator("#bubbles .bubble");
 
         public async Task EsperarBurbujasAsync()

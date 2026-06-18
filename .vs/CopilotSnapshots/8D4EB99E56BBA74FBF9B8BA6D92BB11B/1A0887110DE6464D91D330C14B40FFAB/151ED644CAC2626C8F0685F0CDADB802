@@ -1,0 +1,20 @@
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.FileProviders;
+
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+// Serve static files from the web-local-instrumented folder
+var staticPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "web-local-instrumented"));
+if (Directory.Exists(staticPath))
+{
+    var provider = new PhysicalFileProvider(staticPath);
+    app.UseDefaultFiles(new DefaultFilesOptions { FileProvider = provider });
+    app.UseStaticFiles(new StaticFileOptions { FileProvider = provider });
+}
+else
+{
+    app.MapGet("/", () => "Static site not found. Place web-local-instrumented folder at repository root.");
+}
+
+app.Run();
